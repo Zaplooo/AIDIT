@@ -6,4 +6,4 @@ curl -s -o nul http://localhost:5175/api/clients && (
 	start "" http://localhost:5175
 	exit /b
 )
-npm run studio
+npm run studio -- %*
