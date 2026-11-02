@@ -1,7 +1,7 @@
 # AIDIT – jak na to
 
 ## Zapnutí
-Dvojklik na **`Spustit AIDIT.cmd`** ve složce `C:\Users\Adam Zapletal\goat-studio`
+Dvojklik na **`Spustit AIDIT.cmd`** ve složce aplikace
 (nebo v terminálu v té složce: `npm run studio`). Otevře se prohlížeč na **http://localhost:5175**.
 Okno terminálu nech otevřené – zavřením se aplikace vypne.
 
