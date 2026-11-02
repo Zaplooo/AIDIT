@@ -15,7 +15,9 @@ AIDIT je lokální aplikace – běží na tvém počítači:
 - **náhled a export** (Remotion) – `src/remotion/`
 - **AI** přes Claude Code (`claude -p`) na předplatné autora
 
-Z internetu ho zpřístupníš přes **Cloudflare Tunnel** (postup v [CLOUDFLARE.md](CLOUDFLARE.md)).
+Z jiných zařízení ho otevřeš přes **Tailscale** (bez limitu velikosti videa):
+na PC `tailscale serve --bg 5175`, na mobilu / notebooku aplikace Tailscale se stejným účtem → `https://<pc>.<tailnet>.ts.net`.
+Veřejně na vlastní doméně přes **Cloudflare Tunnel** (postup v [CLOUDFLARE.md](CLOUDFLARE.md), upload max. 100 MB).
 
 ## Spuštění
 
