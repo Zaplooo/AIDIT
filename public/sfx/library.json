@@ -1,0 +1,359 @@
+[
+ {
+  "id": "own_camera_01",
+  "file": "sfx/camera_01.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 01",
+  "own": true
+ },
+ {
+  "id": "own_camera_02",
+  "file": "sfx/camera_02.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 02",
+  "own": true
+ },
+ {
+  "id": "own_camera_03",
+  "file": "sfx/camera_03.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 03",
+  "own": true
+ },
+ {
+  "id": "own_camera_04",
+  "file": "sfx/camera_04.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 04",
+  "own": true
+ },
+ {
+  "id": "own_camera_05",
+  "file": "sfx/camera_05.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 05",
+  "own": true
+ },
+ {
+  "id": "own_camera_06",
+  "file": "sfx/camera_06.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 06",
+  "own": true
+ },
+ {
+  "id": "own_camera_07",
+  "file": "sfx/camera_07.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 07",
+  "own": true
+ },
+ {
+  "id": "own_camera_08",
+  "file": "sfx/camera_08.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 08",
+  "own": true
+ },
+ {
+  "id": "own_camera_09",
+  "file": "sfx/camera_09.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 09",
+  "own": true
+ },
+ {
+  "id": "own_camera_10",
+  "file": "sfx/camera_10.mp3",
+  "cat": "camera",
+  "name": "Tvůj camera 10",
+  "own": true
+ },
+ {
+  "id": "own_click_01",
+  "file": "sfx/click_01.mp3",
+  "cat": "click",
+  "name": "Tvůj click 01",
+  "own": true
+ },
+ {
+  "id": "own_digital_01",
+  "file": "sfx/digital_01.mp3",
+  "cat": "glitch",
+  "name": "Tvůj digital 01",
+  "own": true
+ },
+ {
+  "id": "own_digital_02",
+  "file": "sfx/digital_02.mp3",
+  "cat": "glitch",
+  "name": "Tvůj digital 02",
+  "own": true
+ },
+ {
+  "id": "own_digital_03",
+  "file": "sfx/digital_03.mp3",
+  "cat": "glitch",
+  "name": "Tvůj digital 03",
+  "own": true
+ },
+ {
+  "id": "own_hit_01",
+  "file": "sfx/hit_01.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 01",
+  "own": true
+ },
+ {
+  "id": "own_hit_02",
+  "file": "sfx/hit_02.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 02",
+  "own": true
+ },
+ {
+  "id": "own_hit_03",
+  "file": "sfx/hit_03.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 03",
+  "own": true
+ },
+ {
+  "id": "own_hit_04",
+  "file": "sfx/hit_04.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 04",
+  "own": true
+ },
+ {
+  "id": "own_hit_05",
+  "file": "sfx/hit_05.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 05",
+  "own": true
+ },
+ {
+  "id": "own_hit_06",
+  "file": "sfx/hit_06.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 06",
+  "own": true
+ },
+ {
+  "id": "own_hit_07",
+  "file": "sfx/hit_07.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 07",
+  "own": true
+ },
+ {
+  "id": "own_hit_08",
+  "file": "sfx/hit_08.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 08",
+  "own": true
+ },
+ {
+  "id": "own_hit_09",
+  "file": "sfx/hit_09.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 09",
+  "own": true
+ },
+ {
+  "id": "own_hit_10",
+  "file": "sfx/hit_10.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 10",
+  "own": true
+ },
+ {
+  "id": "own_hit_11",
+  "file": "sfx/hit_11.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 11",
+  "own": true
+ },
+ {
+  "id": "own_hit_12",
+  "file": "sfx/hit_12.mp3",
+  "cat": "impact",
+  "name": "Tvůj hit 12",
+  "own": true
+ },
+ {
+  "id": "own_riser_01",
+  "file": "sfx/riser_01.mp3",
+  "cat": "riser",
+  "name": "Tvůj riser 01",
+  "own": true
+ },
+ {
+  "id": "own_riser_02",
+  "file": "sfx/riser_02.mp3",
+  "cat": "riser",
+  "name": "Tvůj riser 02",
+  "own": true
+ },
+ {
+  "id": "own_riser_03",
+  "file": "sfx/riser_03.mp3",
+  "cat": "riser",
+  "name": "Tvůj riser 03",
+  "own": true
+ },
+ {
+  "id": "own_riser_04",
+  "file": "sfx/riser_04.mp3",
+  "cat": "riser",
+  "name": "Tvůj riser 04",
+  "own": true
+ },
+ {
+  "id": "own_typing_01",
+  "file": "sfx/typing_01.mp3",
+  "cat": "typing",
+  "name": "Tvůj typing 01",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_01",
+  "file": "sfx/whoosh_01.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 01",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_02",
+  "file": "sfx/whoosh_02.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 02",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_03",
+  "file": "sfx/whoosh_03.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 03",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_04",
+  "file": "sfx/whoosh_04.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 04",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_05",
+  "file": "sfx/whoosh_05.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 05",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_06",
+  "file": "sfx/whoosh_06.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 06",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_07",
+  "file": "sfx/whoosh_07.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 07",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_08",
+  "file": "sfx/whoosh_08.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 08",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_09",
+  "file": "sfx/whoosh_09.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 09",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_10",
+  "file": "sfx/whoosh_10.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 10",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_11",
+  "file": "sfx/whoosh_11.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 11",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_12",
+  "file": "sfx/whoosh_12.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 12",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_13",
+  "file": "sfx/whoosh_13.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 13",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_14",
+  "file": "sfx/whoosh_14.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 14",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_15",
+  "file": "sfx/whoosh_15.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 15",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_16",
+  "file": "sfx/whoosh_16.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 16",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_17",
+  "file": "sfx/whoosh_17.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 17",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_18",
+  "file": "sfx/whoosh_18.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 18",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_19",
+  "file": "sfx/whoosh_19.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 19",
+  "own": true
+ },
+ {
+  "id": "own_whoosh_20",
+  "file": "sfx/whoosh_20.mp3",
+  "cat": "whoosh",
+  "name": "Tvůj whoosh 20",
+  "own": true
+ }
+]

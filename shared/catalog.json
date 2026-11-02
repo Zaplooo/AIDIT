@@ -1,0 +1,1325 @@
+{
+ "colors": [
+  {
+   "hex": "#3D7BFF",
+   "name": "Modrá"
+  },
+  {
+   "hex": "#1E5BF0",
+   "name": "Královská modrá"
+  },
+  {
+   "hex": "#18A6F2",
+   "name": "Azurová"
+  },
+  {
+   "hex": "#00D1C1",
+   "name": "Tyrkys"
+  },
+  {
+   "hex": "#22C55E",
+   "name": "Zelená"
+  },
+  {
+   "hex": "#A3E635",
+   "name": "Limetka"
+  },
+  {
+   "hex": "#FACC15",
+   "name": "Žlutá"
+  },
+  {
+   "hex": "#FFD84D",
+   "name": "Zlatá"
+  },
+  {
+   "hex": "#F59E0B",
+   "name": "Jantar"
+  },
+  {
+   "hex": "#FF7A1A",
+   "name": "Oranžová"
+  },
+  {
+   "hex": "#FF3B3B",
+   "name": "Červená"
+  },
+  {
+   "hex": "#E11D48",
+   "name": "Malinová"
+  },
+  {
+   "hex": "#FF4FA3",
+   "name": "Růžová"
+  },
+  {
+   "hex": "#D946EF",
+   "name": "Fuchsie"
+  },
+  {
+   "hex": "#A855F7",
+   "name": "Fialová"
+  },
+  {
+   "hex": "#6366F1",
+   "name": "Indigo"
+  },
+  {
+   "hex": "#C9A46A",
+   "name": "Béžová zlatá"
+  },
+  {
+   "hex": "#94A3B8",
+   "name": "Ocelová"
+  },
+  {
+   "hex": "#FFFFFF",
+   "name": "Bílá"
+  },
+  {
+   "hex": "#111111",
+   "name": "Černá"
+  }
+ ],
+ "bgs": [
+  {
+   "id": "dark",
+   "label": "Tmavé",
+   "desc": "tmavá hloubka a světelné paprsky v tvé barvě"
+  },
+  {
+   "id": "black",
+   "label": "Černé se září",
+   "desc": "čistě černá a měkká záře"
+  },
+  {
+   "id": "brand",
+   "label": "Barevná mřížka",
+   "desc": "pozadí v tvé barvě s mřížkou dlaždic"
+  },
+  {
+   "id": "cream",
+   "label": "Krémový papír",
+   "desc": "teplá krémová mřížka, ručně psaný styl"
+  },
+  {
+   "id": "white",
+   "label": "Bílé",
+   "desc": "čisté světlé pozadí, Apple styl"
+  }
+ ],
+ "fonts": [
+  {
+   "family": "Inter Tight",
+   "label": "Inter Tight",
+   "desc": "moderní, čistý",
+   "cat": "bold"
+  },
+  {
+   "family": "Montserrat",
+   "label": "Montserrat",
+   "desc": "výrazný, univerzální",
+   "cat": "bold"
+  },
+  {
+   "family": "Poppins",
+   "label": "Poppins",
+   "desc": "kulatý, přátelský",
+   "cat": "bold"
+  },
+  {
+   "family": "Archivo Black",
+   "label": "Archivo Black",
+   "desc": "tučný creator styl",
+   "cat": "bold"
+  },
+  {
+   "family": "Anton",
+   "label": "Anton",
+   "desc": "úzký, hlasitý",
+   "cat": "bold"
+  },
+  {
+   "family": "Bebas Neue",
+   "label": "Bebas Neue",
+   "desc": "úzké verzálky",
+   "cat": "bold"
+  },
+  {
+   "family": "DM Serif Display",
+   "label": "DM Serif",
+   "desc": "elegantní patkové",
+   "cat": "elegant"
+  },
+  {
+   "family": "Instrument Serif",
+   "label": "Instrument Serif",
+   "desc": "filmová kurzíva",
+   "cat": "elegant"
+  },
+  {
+   "family": "IBM Plex Mono",
+   "label": "Plex Mono",
+   "desc": "technický, strojopis",
+   "cat": "tech"
+  },
+  {
+   "family": "Kalam",
+   "label": "Kalam",
+   "desc": "ručně psaný fix",
+   "cat": "hand"
+  },
+  {
+   "family": "Patrick Hand",
+   "label": "Patrick Hand",
+   "desc": "ručně psané, přátelské",
+   "cat": "hand"
+  },
+  {
+   "family": "Bangers",
+   "label": "Bangers",
+   "desc": "komiks, energie",
+   "cat": "fun"
+  },
+  {
+   "family": "Abril Fatface",
+   "label": "Abril Fatface",
+   "desc": "módní patkové",
+   "cat": "elegant"
+  },
+  {
+   "family": "Pacifico",
+   "label": "Pacifico",
+   "desc": "štětec, lifestyle",
+   "cat": "hand"
+  },
+  {
+   "family": "Righteous",
+   "label": "Righteous",
+   "desc": "retro, zaoblené",
+   "cat": "fun"
+  },
+  {
+   "family": "Lobster",
+   "label": "Lobster",
+   "desc": "psací, výrazné",
+   "cat": "hand"
+  },
+  {
+   "family": "Shrikhand",
+   "label": "Shrikhand",
+   "desc": "tučná kurzíva",
+   "cat": "fun"
+  },
+  {
+   "family": "Black Ops One",
+   "label": "Black Ops One",
+   "desc": "šablonové, drsné",
+   "cat": "tech"
+  }
+ ],
+ "captions": [
+  {
+   "id": "goat",
+   "label": "Goat modrá",
+   "desc": "malá písmena, aktivní slovo v tvé barvě",
+   "style": {
+    "mode": "goat",
+    "font": "Poppins",
+    "weight": 800,
+    "size": 51,
+    "textCase": "lower",
+    "maxWords": 3,
+    "y": 0.69,
+    "animation": "fade-up",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "color"
+  },
+  {
+   "id": "bold",
+   "label": "Tučné creator",
+   "desc": "VELKÁ PÍSMENA, klíčové slovo svítí",
+   "style": {
+    "mode": "bold",
+    "font": "Archivo Black",
+    "weight": 400,
+    "size": 76,
+    "textCase": "upper",
+    "maxWords": 2,
+    "y": 0.66,
+    "animation": "pop",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "color"
+  },
+  {
+   "id": "mix",
+   "label": "Mix fontů",
+   "desc": "tučné + elegantní kurzíva",
+   "style": {
+    "mode": "mix",
+    "font": "Montserrat",
+    "weight": 800,
+    "size": 64,
+    "textCase": "lower",
+    "maxWords": 4,
+    "y": 0.68,
+    "animation": "blur",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "color"
+  },
+  {
+   "id": "word",
+   "label": "Filmová kurzíva",
+   "desc": "klíčové slovo velkou kurzívou",
+   "style": {
+    "mode": "word",
+    "font": "Inter Tight",
+    "weight": 800,
+    "size": 60,
+    "textCase": "lower",
+    "maxWords": 3,
+    "y": 0.7,
+    "animation": "blur",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "color"
+  },
+  {
+   "id": "karaoke",
+   "label": "Žluté karaoke",
+   "desc": "právě vyslovené slovo žlutě",
+   "style": {
+    "mode": "goat",
+    "font": "Montserrat",
+    "weight": 800,
+    "size": 66,
+    "textCase": "upper",
+    "maxWords": 3,
+    "y": 0.67,
+    "animation": "pop",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "#FFD84D"
+  },
+  {
+   "id": "anton",
+   "label": "Úzké hlasité",
+   "desc": "Anton, dvě slova, pružina",
+   "style": {
+    "mode": "bold",
+    "font": "Anton",
+    "weight": 400,
+    "size": 92,
+    "textCase": "upper",
+    "maxWords": 2,
+    "y": 0.66,
+    "animation": "pop",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "color"
+  },
+  {
+   "id": "bebas",
+   "label": "Bebas verzálky",
+   "desc": "úzké verzálky, aktivní slovo barevně",
+   "style": {
+    "mode": "goat",
+    "font": "Bebas Neue",
+    "weight": 400,
+    "size": 96,
+    "textCase": "upper",
+    "maxWords": 3,
+    "y": 0.67,
+    "animation": "fade-up",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": "color"
+  },
+  {
+   "id": "minimal",
+   "label": "Minimalistické",
+   "desc": "menší, normální písmo, bez efektů",
+   "style": {
+    "mode": "goat",
+    "font": "Inter",
+    "weight": 600,
+    "size": 44,
+    "textCase": "normal",
+    "maxWords": 5,
+    "y": 0.75,
+    "animation": "fade-up",
+    "shadow": true,
+    "color": "#FFFFFF"
+   },
+   "hl": ""
+  },
+  {
+   "id": "duo",
+   "label": "Dva fonty",
+   "desc": "tučné + každé druhé slovo elegantní kurzívou",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "animation": "blur",
+    "mode": "custom",
+    "font": "Montserrat",
+    "size": 64,
+    "textCase": "lower",
+    "maxWords": 3,
+    "alt": {
+     "every": "alternate",
+     "font": "Instrument Serif",
+     "italic": true,
+     "scale": 1.18
+    },
+    "active": {
+     "color": "$color"
+    }
+   }
+  },
+  {
+   "id": "activeserif",
+   "label": "Aktivní slovo kurzívou",
+   "desc": "vyslovené slovo se změní na velkou kurzívu",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "animation": "pop",
+    "mode": "custom",
+    "font": "Inter Tight",
+    "size": 62,
+    "textCase": "lower",
+    "maxWords": 3,
+    "active": {
+     "font": "Instrument Serif",
+     "italic": true,
+     "scale": 1.28,
+     "color": "$color"
+    }
+   }
+  },
+  {
+   "id": "boxactive",
+   "label": "Aktivní slovo v boxu",
+   "desc": "barevný box skáče ze slova na slovo",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "animation": "pop",
+    "mode": "custom",
+    "font": "Montserrat",
+    "size": 66,
+    "textCase": "upper",
+    "maxWords": 3,
+    "active": {
+     "box": "$color",
+     "color": "#FFFFFF",
+     "scale": 1.06
+    }
+   }
+  },
+  {
+   "id": "outline",
+   "label": "Obrys (TikTok)",
+   "desc": "bílé písmo s černým obrysem, aktivní žluté",
+   "hl": "#FFD84D",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "animation": "pop",
+    "mode": "custom",
+    "font": "Montserrat",
+    "size": 70,
+    "textCase": "upper",
+    "maxWords": 3,
+    "stroke": 9,
+    "strokeColor": "#000000",
+    "active": {
+     "color": "#FFD84D",
+     "scale": 1.1
+    }
+   }
+  },
+  {
+   "id": "comic",
+   "label": "Komiks",
+   "desc": "Bangers, obrys, aktivní slovo vyskočí",
+   "hl": "#FFD84D",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "animation": "pop",
+    "mode": "custom",
+    "font": "Bangers",
+    "size": 100,
+    "textCase": "upper",
+    "maxWords": 2,
+    "stroke": 10,
+    "strokeColor": "#000000",
+    "active": {
+     "color": "#FFD84D",
+     "scale": 1.18
+    }
+   }
+  },
+  {
+   "id": "linebox",
+   "label": "Podklad pod textem",
+   "desc": "čitelné na každém pozadí, tmavý podklad",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "animation": "fade-up",
+    "mode": "custom",
+    "font": "Inter",
+    "size": 50,
+    "textCase": "normal",
+    "maxWords": 5,
+    "box": "#000000b8",
+    "active": {
+     "color": "$color"
+    }
+   }
+  },
+  {
+   "id": "apple",
+   "label": "Jemné Apple",
+   "desc": "nevyslovená slova ztlumená, aktivní bílé",
+   "hl": "",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF73",
+    "animation": "blur",
+    "mode": "custom",
+    "font": "Inter Tight",
+    "size": 58,
+    "textCase": "normal",
+    "maxWords": 4,
+    "active": {
+     "color": "#FFFFFF"
+    }
+   }
+  },
+  {
+   "id": "neon",
+   "label": "Neon",
+   "desc": "retro písmo, aktivní slovo svítí",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "animation": "pop",
+    "mode": "custom",
+    "font": "Righteous",
+    "size": 70,
+    "textCase": "upper",
+    "maxWords": 3,
+    "active": {
+     "color": "$color",
+     "glow": true,
+     "scale": 1.08
+    }
+   }
+  },
+  {
+   "id": "hand",
+   "label": "Ručně psané",
+   "desc": "fix, osobní styl",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "animation": "fade-up",
+    "mode": "custom",
+    "font": "Kalam",
+    "size": 72,
+    "textCase": "lower",
+    "maxWords": 3,
+    "active": {
+     "color": "$color",
+     "scale": 1.1
+    }
+   }
+  },
+  {
+   "id": "editorial",
+   "label": "Módní",
+   "desc": "Abril Fatface, klíčová slova v barvě",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "animation": "blur",
+    "mode": "custom",
+    "font": "Abril Fatface",
+    "size": 70,
+    "textCase": "normal",
+    "maxWords": 3,
+    "alt": {
+     "every": "keyword",
+     "font": "Instrument Serif",
+     "italic": true,
+     "color": "$color",
+     "scale": 1.15
+    }
+   }
+  }
+ ],
+ "zooms": [
+  {
+   "id": "none",
+   "label": "Bez zoomu",
+   "desc": "kamera stojí, jen tvrdé střihy"
+  },
+  {
+   "id": "punch",
+   "label": "Tvrdý skok 100 → 110 %",
+   "desc": "na důrazech z ničeho nic přiblíží, pak zpět"
+  },
+  {
+   "id": "jump",
+   "label": "Střídání 100 / 112 %",
+   "desc": "každý druhý záběr přiblížený (jump cut)"
+  },
+  {
+   "id": "pulse",
+   "label": "Rychlý nájezd",
+   "desc": "na důrazu rychle najede na 112 % a usadí se"
+  },
+  {
+   "id": "creep",
+   "label": "Pomalý nájezd 100 → 104 %",
+   "desc": "každý záběr pomalu jede nahoru (101, 102, 103…)"
+  },
+  {
+   "id": "ken",
+   "label": "Plynulý nájezd přes větu",
+   "desc": "na důležité větě plynule 100 → 110 %, pak střih zpět"
+  }
+ ],
+ "hooks": [
+  {
+   "id": "none",
+   "label": "Jen mluvčí",
+   "desc": "čistý start, žádná grafika"
+  },
+  {
+   "id": "title",
+   "label": "Velký nadpis",
+   "desc": "hook text nahoře přes záběr, odhalí se slovo po slově"
+  },
+  {
+   "id": "box",
+   "label": "Malý rámeček",
+   "desc": "skleněný štítek s hookem nahoře"
+  },
+  {
+   "id": "split",
+   "label": "Grafika přes půlku",
+   "desc": "nahoře grafika s hookem, dole mluvčí"
+  },
+  {
+   "id": "full",
+   "label": "Grafika přes celou obrazovku",
+   "desc": "první vteřina patří velké grafice"
+  },
+  {
+   "id": "broll",
+   "label": "B-roll hned na startu",
+   "desc": "z ničeho nic záběr, který ilustruje první větu"
+  },
+  {
+   "id": "zoom",
+   "label": "Prudký nájezd",
+   "desc": "první věta s nájezdem na obličej"
+  }
+ ],
+ "moods": [
+  {
+   "id": "energetic",
+   "label": "Energická"
+  },
+  {
+   "id": "motivating",
+   "label": "Motivační"
+  },
+  {
+   "id": "hiphop",
+   "label": "Hip-hop beat"
+  },
+  {
+   "id": "lofi",
+   "label": "Lo-fi"
+  },
+  {
+   "id": "chill",
+   "label": "Chill"
+  },
+  {
+   "id": "cinematic",
+   "label": "Filmová"
+  },
+  {
+   "id": "dark",
+   "label": "Temná"
+  },
+  {
+   "id": "happy",
+   "label": "Veselá"
+  },
+  {
+   "id": "corporate",
+   "label": "Firemní"
+  },
+  {
+   "id": "emotional",
+   "label": "Emotivní"
+  }
+ ],
+ "gfx": [
+  {
+   "type": "reveal",
+   "label": "Odhalení textu",
+   "desc": "Apple styl, slovo po slově, klíčové slovo svítí",
+   "sample": {
+    "type": "reveal",
+    "text": "Spánek je základ tvé energie",
+    "highlight": "energie"
+   }
+  },
+  {
+   "type": "headline",
+   "label": "Nadpis s fixem",
+   "desc": "nadpis, klíčové slovo podtržené fixem",
+   "sample": {
+    "type": "headline",
+    "text": "Spánek je základ energie",
+    "highlight": "základ",
+    "sub": "Energie · část 1"
+   }
+  },
+  {
+   "type": "stat",
+   "label": "Číslo v kruhu",
+   "desc": "číslo se načte v kruhu",
+   "sample": {
+    "type": "stat",
+    "value": "60–90 min",
+    "label": "bez modrého světla"
+   }
+  },
+  {
+   "type": "particles",
+   "label": "Číslo z částic",
+   "desc": "velké číslo z tisíců svítících teček",
+   "sample": {
+    "type": "particles",
+    "value": "$500",
+    "text": "za měsíc navíc"
+   }
+  },
+  {
+   "type": "list",
+   "label": "Seznam s fajfkami",
+   "desc": "body se postupně odškrtávají",
+   "sample": {
+    "type": "list",
+    "title": "4 věci pro lepší spánek",
+    "items": [
+     "Žádné obrazovky",
+     "Pracuj se stresem",
+     "Nejez 2–3 h předem",
+     "Úplná tma"
+    ]
+   }
+  },
+  {
+   "type": "cards",
+   "label": "Karty s ikonami",
+   "desc": "2–4 karty [1][2][3]",
+   "sample": {
+    "type": "cards",
+    "title": "Tvůj večer",
+    "items": [
+     {
+      "icon": "phone",
+      "title": "Bez mobilu",
+      "sub": "90 min"
+     },
+     {
+      "icon": "food",
+      "title": "Nejez",
+      "sub": "2–3 h"
+     },
+     {
+      "icon": "moon",
+      "title": "Tma",
+      "sub": "maska"
+     }
+    ]
+   }
+  },
+  {
+   "type": "chips",
+   "label": "Svítící tlačítka",
+   "desc": "řada tlačítek se postupně rozsvítí",
+   "sample": {
+    "type": "chips",
+    "items": [
+     "Tma",
+     "Klid",
+     "Vyvětrat",
+     "Bez mobilu"
+    ],
+    "icons": [
+     "moon",
+     "heart",
+     "wind",
+     "phone"
+    ]
+   }
+  },
+  {
+   "type": "chapter",
+   "label": "Kapitola",
+   "desc": "číslo a VELKÝ titulek na mřížce",
+   "sample": {
+    "type": "chapter",
+    "n": 3,
+    "title": "Tma a klid"
+   }
+  },
+  {
+   "type": "step",
+   "label": "Krok",
+   "desc": "velké číslo kroku a název",
+   "sample": {
+    "type": "step",
+    "n": 2,
+    "title": "Pracuj se stresem",
+    "sub": "víc v dalším videu"
+   }
+  },
+  {
+   "type": "compare",
+   "label": "Špatně vs. správně",
+   "desc": "dva sloupce ✗ / ✓",
+   "sample": {
+    "type": "compare",
+    "left": "Před spaním",
+    "right": "Místo toho",
+    "leftItems": [
+     "Mobil v posteli",
+     "Večeře v 22:00"
+    ],
+    "rightItems": [
+     "Kniha",
+     "Jídlo do 19:00"
+    ]
+   }
+  },
+  {
+   "type": "versus",
+   "label": "Srovnání přes záběr",
+   "desc": "vlevo a vpravo s ikonami, mluvčí zůstává vidět",
+   "overlay": true,
+   "sample": {
+    "type": "versus",
+    "left": "Mobil",
+    "leftSub": "do noci",
+    "leftIcon": "phone",
+    "right": "Kniha",
+    "rightSub": "30 min",
+    "rightIcon": "book"
+   }
+  },
+  {
+   "type": "side",
+   "label": "Karty vedle mluvčího",
+   "desc": "2–3 karty vedle tebe",
+   "overlay": true,
+   "sample": {
+    "type": "side",
+    "items": [
+     {
+      "icon": "phone",
+      "title": "Mobil"
+     },
+     {
+      "icon": "food",
+      "title": "Jídlo"
+     },
+     {
+      "icon": "stress",
+      "title": "Stres"
+     }
+    ]
+   }
+  },
+  {
+   "type": "pill",
+   "label": "Skleněný štítek",
+   "desc": "krátká věta přes záběr",
+   "overlay": true,
+   "sample": {
+    "type": "pill",
+    "text": "a ráno se divíš, proč jsi unavený?"
+   }
+  },
+  {
+   "type": "quote",
+   "label": "Citát",
+   "desc": "pointa elegantní kurzívou",
+   "sample": {
+    "type": "quote",
+    "text": "Experimentuj, co funguje tobě",
+    "highlight": "tobě",
+    "sub": "Pointa"
+   }
+  },
+  {
+   "type": "slam",
+   "label": "Obří slova",
+   "desc": "1–3 slova přes celou obrazovku s nárazem",
+   "sample": {
+    "type": "slam",
+    "words": [
+     "SPI",
+     "LÍP"
+    ]
+   }
+  },
+  {
+   "type": "chat",
+   "label": "Chat zprávy",
+   "desc": "konverzace, bubliny naskakují",
+   "sample": {
+    "type": "chat",
+    "messages": [
+     {
+      "from": "them",
+      "text": "Zase jsi unavenej?"
+     },
+     {
+      "from": "me",
+      "text": "Ve 2 odpoledne jako vždy"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prompt",
+   "label": "AI okno",
+   "desc": "do okna se píše věta",
+   "sample": {
+    "type": "prompt",
+    "text": "Jak se vyspat a mít energii?"
+   }
+  },
+  {
+   "type": "gauge",
+   "label": "Budík / riziko",
+   "desc": "ručička ukáže úroveň",
+   "sample": {
+    "type": "gauge",
+    "value": "vysoké",
+    "label": "Únava ve 14:00",
+    "level": 0.8
+   }
+  },
+  {
+   "type": "crowd",
+   "label": "Ty vs. ostatní",
+   "desc": "odlišíš se od davu",
+   "sample": {
+    "type": "crowd",
+    "you": "Ty",
+    "them": "Unavení ostatní"
+   }
+  },
+  {
+   "type": "timer",
+   "label": "Odpočet",
+   "desc": "běžící čas",
+   "sample": {
+    "type": "timer",
+    "value": "00:90:00",
+    "label": "bez obrazovky"
+   }
+  },
+  {
+   "type": "note",
+   "label": "Ručně psaný text",
+   "desc": "fix na papíře, osobní chvíle",
+   "sample": {
+    "type": "note",
+    "lines": [
+     "všichni",
+     "známe",
+     "TEN POCIT"
+    ]
+   }
+  },
+  {
+   "type": "bars",
+   "label": "Sloupcový graf",
+   "desc": "sloupce vyrostou, nejvyšší svítí",
+   "sample": {
+    "type": "bars",
+    "title": "Hodiny spánku",
+    "items": [
+     {
+      "label": "Ty",
+      "value": 5
+     },
+     {
+      "label": "Doporučeno",
+      "value": 8
+     },
+     {
+      "label": "Sportovci",
+      "value": 9
+     }
+    ]
+   }
+  },
+  {
+   "type": "timeline",
+   "label": "Časová osa",
+   "desc": "body na čáře naskočí postupně",
+   "sample": {
+    "type": "timeline",
+    "title": "Tvůj večer",
+    "items": [
+     "19:00 večeře",
+     "21:00 bez mobilu",
+     "22:30 spánek"
+    ]
+   }
+  },
+  {
+   "type": "bigicon",
+   "label": "Velká ikona",
+   "desc": "obří svítící ikona + text",
+   "sample": {
+    "type": "bigicon",
+    "icon": "moon",
+    "text": "Úplná tma",
+    "sub": "zatemni pokoj"
+   }
+  },
+  {
+   "type": "question",
+   "label": "Velká otázka",
+   "desc": "obří otazník a otázka",
+   "sample": {
+    "type": "question",
+    "text": "Proč jsi pořád unavený?"
+   }
+  },
+  {
+   "type": "progress",
+   "label": "Ukazatel průběhu",
+   "desc": "procenta a plnící se pruh",
+   "sample": {
+    "type": "progress",
+    "label": "Energie ráno",
+    "level": 0.85,
+    "text": "po 2 týdnech"
+   }
+  },
+  {
+   "type": "kinetic",
+   "label": "Kinetická typografie",
+   "desc": "slova pod sebou, střídá tučné a kurzívu",
+   "sample": {
+    "type": "kinetic",
+    "words": [
+     "Spi",
+     "líp,",
+     "žij",
+     "víc"
+    ]
+   }
+  },
+  {
+   "type": "lowerthird",
+   "label": "Jmenovka",
+   "desc": "jméno / téma dole přes záběr",
+   "overlay": true,
+   "sample": {
+    "type": "lowerthird",
+    "title": "Jakub Dvořák",
+    "sub": "energie a spánek"
+   }
+  },
+  {
+   "type": "counter",
+   "label": "Počítadlo přes záběr",
+   "desc": "číslo se načte nad mluvčím",
+   "overlay": true,
+   "sample": {
+    "type": "counter",
+    "value": "8 hodin",
+    "label": "spánku denně"
+   }
+  },
+  {
+   "type": "marquee",
+   "label": "Běžící pás textu",
+   "desc": "šikmý pás s textem přes záběr",
+   "overlay": true,
+   "sample": {
+    "type": "marquee",
+    "text": "spánek je základ"
+   }
+  },
+  {
+   "type": "custom",
+   "label": "Vlastní na míru (AI)",
+   "desc": "AI navrhne grafiku přesně pro tohle místo videa",
+   "sample": {
+    "type": "custom",
+    "title": "Večerní rutina",
+    "layout": "stack",
+    "items": [
+     {
+      "kind": "icon",
+      "icon": "phone",
+      "text": "Mobil pryč",
+      "sub": "90 min před spaním"
+     },
+     {
+      "kind": "icon",
+      "icon": "food",
+      "text": "Poslední jídlo",
+      "sub": "2–3 h předem"
+     },
+     {
+      "kind": "check",
+      "text": "Úplná tma",
+      "sub": "maska nebo závěsy"
+     }
+    ]
+   }
+  }
+ ],
+ "fontCats": [
+  {
+   "id": "bold",
+   "label": "Tučná a moderní"
+  },
+  {
+   "id": "elegant",
+   "label": "Elegantní (patková)"
+  },
+  {
+   "id": "hand",
+   "label": "Ručně psaná"
+  },
+  {
+   "id": "fun",
+   "label": "Hravá"
+  },
+  {
+   "id": "tech",
+   "label": "Technická"
+  }
+ ],
+ "types": [
+  {
+   "id": "reels",
+   "label": "Reels / TikTok s mluvením",
+   "desc": "mluvíš do kamery: rychlý střih, titulky, grafika jen tam, kde pomáhá",
+   "icon": "chat",
+   "format": "9:16",
+   "speech": true,
+   "setup": {}
+  },
+  {
+   "id": "clean",
+   "label": "Čistý střih s titulky",
+   "desc": "jen střihy a titulky – žádná grafika, žádné efekty",
+   "icon": "cut",
+   "format": "9:16",
+   "speech": true,
+   "setup": {
+    "gfxAmount": "none",
+    "broll": "off",
+    "zoom": "none",
+    "hook": {
+     "visual": "none",
+     "sfx": false,
+     "text": ""
+    },
+    "caption": "minimal",
+    "sfx": "off",
+    "music": {
+     "mode": "mood",
+     "mood": "chill"
+    }
+   }
+  },
+  {
+   "id": "youtube",
+   "label": "YouTube video",
+   "desc": "delší video na šířku, klidnější titulky, kapitoly",
+   "icon": "play",
+   "format": "16:9",
+   "speech": true,
+   "setup": {
+    "tempo": "normal",
+    "caption": "minimal",
+    "bg": "brand",
+    "gfxAmount": "low"
+   }
+  },
+  {
+   "id": "podcast",
+   "label": "Rozhovor / podcast",
+   "desc": "klidný střih, čitelné titulky s podkladem, bez grafiky",
+   "icon": "users",
+   "format": "16:9",
+   "speech": true,
+   "setup": {
+    "gfxAmount": "none",
+    "broll": "off",
+    "caption": "linebox",
+    "tempo": "calm",
+    "music": {
+     "mode": "off"
+    },
+    "sfx": "off",
+    "hook": {
+     "visual": "none",
+     "sfx": false,
+     "text": ""
+    }
+   }
+  },
+  {
+   "id": "vlog",
+   "label": "Vlog",
+   "desc": "přirozený střih, hodně B-rollu, lehká hudba",
+   "icon": "film",
+   "format": "9:16",
+   "speech": true,
+   "setup": {
+    "gfxAmount": "low",
+    "broll": "lots",
+    "caption": "apple",
+    "music": {
+     "mode": "mood",
+     "mood": "happy"
+    },
+    "tempo": "normal"
+   }
+  },
+  {
+   "id": "company",
+   "label": "Firemní video",
+   "desc": "profesionální a čisté: decentní titulky a grafika",
+   "icon": "folder",
+   "format": "16:9",
+   "speech": true,
+   "setup": {
+    "gfxAmount": "low",
+    "caption": "minimal",
+    "music": {
+     "mode": "mood",
+     "mood": "corporate"
+    },
+    "bg": "white",
+    "tempo": "normal",
+    "hook": {
+     "visual": "none",
+     "sfx": false,
+     "text": ""
+    }
+   }
+  },
+  {
+   "id": "product",
+   "label": "Produktové video",
+   "desc": "bez mluvení: nejhezčí záběry do rytmu hudby + elegantní popisky",
+   "icon": "frame",
+   "format": "9:16",
+   "speech": false,
+   "music": "cinematic",
+   "setup": {
+    "zoom": "creep",
+    "sfx": "soft",
+    "captionsOn": false,
+    "font": "Inter Tight",
+    "bg": "black"
+   }
+  },
+  {
+   "id": "realestate",
+   "label": "Nemovitost",
+   "desc": "bez mluvení: prohlídka do hudby, dispozice, cena, lokalita",
+   "icon": "home",
+   "format": "9:16",
+   "speech": false,
+   "music": "chill",
+   "setup": {
+    "zoom": "creep",
+    "sfx": "off",
+    "captionsOn": false,
+    "font": "Inter Tight",
+    "serif": "Instrument Serif",
+    "bg": "black"
+   }
+  },
+  {
+   "id": "ad",
+   "label": "Reklama / spot",
+   "desc": "bez mluvení: rychlé záběry do rytmu a výrazné texty",
+   "icon": "hook",
+   "format": "9:16",
+   "speech": false,
+   "music": "energetic",
+   "setup": {
+    "zoom": "creep",
+    "sfx": "bold",
+    "captionsOn": false,
+    "font": "Archivo Black",
+    "bg": "black"
+   }
+  }
+ ]
+}

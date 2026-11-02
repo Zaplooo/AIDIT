@@ -1,0 +1,80 @@
+{
+ "id": "storytelling",
+ "order": 1,
+ "name": "Storytelling s B-rollem",
+ "description": "Rychlý vertikální storytelling: mluvčí s mikrofonem je jen kostra, skoro každá věta je doslovně ilustrovaná B-rollem (archiv, screenshoty, karty na bílém pozadí, ikony). Malé lowercase titulky po 1–3 slovech s kurzívou s patkami na klíčových slovech, blur-in. Tvrdé střihy, nárazové série, jemné push-iny. Hudba a SFX jsou důležitou součástí stylu.",
+ "platform": "reels",
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "warm",
+  "layout": "full",
+  "sfx": "soft",
+  "accent": "#FFEB00",
+  "music": "auto",
+  "zoom": true,
+  "cardKind": "cream"
+ },
+ "theme": {
+  "bg": "cream",
+  "font": "Inter Tight",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "word",
+  "font": "Inter Tight",
+  "weight": 800,
+  "size": 66,
+  "color": "#FFFFFF",
+  "highlight": "#FFEB00",
+  "textCase": "lower",
+  "maxWords": 3,
+  "y": 0.52,
+  "animation": "blur",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "cream",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 40,
+  "fullscreenShare": 0.4,
+  "brollShare": 0.6,
+  "preferredGfx": [
+   "reveal",
+   "note",
+   "pill",
+   "side",
+   "stat",
+   "quote",
+   "cards",
+   "chat",
+   "list"
+  ],
+  "layouts": [
+   "full",
+   "split",
+   "pip"
+  ],
+  "rules": [
+   "Hook v prvních 2–3 s: kontrariánský výrok jako headline/slam a hned rychlá série krátkých záběrů (0,3–0,5 s) nebo B-roll.",
+   "B-roll tvoří cca 60 % času: téměř každá věta, jméno nebo číslo dostane doslovný vizuál (screenshot, archivní záběr, ikona, karta). B-roll střídej po 2–5 s, na hooku i rychleji.",
+   "Mluvčí (full) funguje jako kotva: vrať ho po sérii B-rollu na 3–6 s, aby vznikla důvěra; ne déle než ~8 s v kuse.",
+   "Grafiky (quote, chat, stat, list) dávej na čisté světlé pozadí (cream) s jednou kartou uprostřed; klíčové číslo nebo jméno jako stat či slam; tmavou kartu jen pro pointu kapitoly.",
+   "Střídej tři světy: mluvčí, bílé karty s UI/screenshoty, celoplošné reálné záběry; nikdy dvě stejné grafiky těsně za sebou.",
+   "Punch-in na důrazných slovech a číslech, jemný push-in na statických B-rollech; střihy tvrdé, na slovo, bez dlouhých přechodů.",
+   "Titulky malé a elegantní, 1–3 slova, kurzíva s patkami na klíčových slovech, uprostřed nebo nad hlavou; nepřekrývej obličej.",
+   "Hudba a SFX jsou stěžejní: výrazná hudba pod řečí, jemné whoosh/pop na přechodech a kartách, náraz na hlavní pointě; synchronizuj na střih.",
+   "Nedělej statické dlouhé záběry bez změny, nepřeplňuj obraz více grafikami najednou, nezdržuj mezerami v řeči.",
+   "Konec: rychlé uzavření s výzvou (např. „back to work“), tvrdý střih, bez dlouhého outra.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Instagram_C8iK3P-xZbk",
+  "Instagram_DAzCFqTRxWm",
+  "Instagram_DfA5xGzxFRy"
+ ]
+}

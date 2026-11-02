@@ -1,0 +1,39 @@
+{
+ "id": "split",
+ "name": "Split screen vysvětlení",
+ "order": 3,
+ "description": "Nahoře nadpis videa a karty s body a kroky, dole ty. Malé titulky po jednom slově. Jako vzdělávací creatoři.",
+ "learnedFrom": [
+  "Instagram_Db-zJhiuXP3",
+  "Instagram_De_5mQ0R8PE"
+ ],
+ "look": {
+  "tempo": "normal",
+  "jump": "hard",
+  "grade": "dark",
+  "layout": "split",
+  "sfx": "soft",
+  "accent": "#E5484D"
+ },
+ "captions": {
+  "mode": "word",
+  "font": "Inter",
+  "weight": 600,
+  "size": 44,
+  "color": "#FFFFFF",
+  "highlight": "",
+  "textCase": "lower",
+  "maxWords": 1,
+  "y": 0.47,
+  "animation": "none",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "panel",
+  "every": 7
+ },
+ "audio": {
+  "lufs": -14,
+  "truePeak": -1.5
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "port": 5175,
+  "python": "python",
+  "ffmpeg": "C:/cesta/k/ffmpeg.exe",
+  "ffprobe": "C:/cesta/k/ffprobe.exe",
+  "whisperModel": "C:/cesta/k/faster-whisper-large-v3",
+  "claude": "auto",
+  "exportDir": "C:/Users/<jmeno>/Downloads/aidit-export"
+}

@@ -1,0 +1,33 @@
+# závislosti a sestavení
+node_modules/
+dist/
+
+# osobní data – videa, projekty, klienti, vkus, cache, cizí videa z referencí
+projects/
+cache/
+references/
+clients/
+prefs.json
+
+# lokální nastavení (cesty k ffmpeg, Whisperu…) – vzor je v config.example.json
+config.json
+
+# vlastní nahrané zvuky (WAV originály)
+public/sfx/*.wav
+
+*.log
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# veřejný repozitář: bez licencovaných médií a bez autorových záběrů
+# (hudba + efekty: python worker/audiolib.py a python worker/sfxlib.py; náhledy: scripts/make_demo.mjs, scripts/gfxtest.mjs)
+public/music/*.mp3
+public/sfx2/*.mp3
+public/sfx/*.mp3
+public/demo/*.mp4
+public/demo/*.jpg
+public/tpl/

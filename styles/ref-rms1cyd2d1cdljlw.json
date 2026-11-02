@@ -1,0 +1,76 @@
+{
+ "id": "ref-rms1cyd2d1cdljlw",
+ "order": 0,
+ "name": "Světlá karta s grafikou",
+ "description": "Explainer talking-head bez střihů: mluvčí v zaoblené kartě ve spodní polovině na světlém pozadí, nad ním každé 1–3 s nová motion grafika (ikony, pill štítky, nadpisy, mockupy) vázaná na slova. Modrý akcent, měkké blur přechody, malé bílé titulky.",
+ "platform": "reels",
+ "look": {
+  "tempo": "normal",
+  "jump": "hard",
+  "grade": "none",
+  "layout": "framed",
+  "sfx": "soft",
+  "accent": "#2F5BEA",
+  "music": "chill",
+  "zoom": false,
+  "cardKind": "cream"
+ },
+ "theme": {
+  "bg": "cream",
+  "font": "Inter",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "word",
+  "font": "Inter",
+  "weight": 600,
+  "size": 45,
+  "color": "#FFFFFF",
+  "highlight": "#FFFFFF",
+  "textCase": "normal",
+  "maxWords": 4,
+  "y": 0.77,
+  "animation": "none",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "cream",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 24,
+  "fullscreenShare": 0.04,
+  "brollShare": 0,
+  "preferredGfx": [
+   "headline",
+   "list",
+   "stat",
+   "step",
+   "chat",
+   "chip",
+   "quote"
+  ],
+  "layouts": [
+   "framed",
+   "split",
+   "full"
+  ],
+  "rules": [
+   "Mluvčí je po hooku (první ~1 s full) pořád v zaoblené kartě (~64 % šířky, ~40 % výšky) ve spodní polovině; nikdy ho nepřekrývej grafikou.",
+   "Horní polovina (y 5–42 %) je jeviště: nová grafika každé 1–3 s, vždy vázaná na konkrétní slovo z řeči (čas → budík, osobní značka → Instagram, video → přehrávač). Grafika začíná ~0,1–0,2 s před klíčovým slovem.",
+   "Používej hlavně ikony se štítkem (chip), pill štítky, tučné nadpisy s jedním modře zvýrazněným slovem, seznam/pipeline kroků (step) a mockupy oken (chat). Nadpis max 1× za ~8 s.",
+   "Motiv ze začátku (např. 'Kolik času?') vrať jako payoff s počítadlem (stat) na konci.",
+   "Přechody mezi grafikami měkké: blur + fade + lehký scale, ~0,3 s. Žádné tvrdé střihy ani najíždění na mluvčího.",
+   "Jedno krátké zvětšení karty (punch) na klíčovou frázi uprostřed videa, pak zpět.",
+   "B-roll nepoužívej; funkci B-rollu plní animované ikony a mockupy.",
+   "Titulky malé, bílé, uvnitř spodní části karty, 2–5 slov, bez barevného zvýraznění.",
+   "Nedělej verzálky, křiklavé efekty ani více akcentních barev než jednu modrou.",
+   "Závěr: CTA grafika (štítek s klíčovým slovem) a klidné ukončení ve stejném layoutu."
+  ]
+ },
+ "learnedFrom": [
+  "https://www.instagram.com/p/DfKW2wgup9I/"
+ ],
+ "summary": "Jeden souvislý záběr bez střihů (0 detekovaných). Po ~1 s hooku na celou obrazovku se mluvčí zmenší do zaoblené karty (~64 % šířky, ~40 % výšky, y ≈ 46–86 %) na světlém pozadí (cca #F4F5F8). Horní polovina (y ≈ 5–42 %) je jeviště pro motion grafiku, která doslova ilustruje řeč: ikony Podnikání / budík / Instagram, bubliny lidí, ikony Čas a Nápady, přehrávače videí, pipeline Nápad→Scénář→Natočit→Střih, mockup Notion a Claude chatu, počítadlo minut. Grafika se mění zhruba každé 1–3 s, vždy přes blur-in/blur-out. Titulky jsou malé, bílé, uvnitř spodní části karty. Rytmus tedy nedělají střihy, ale výměny grafik. Pásy pokrývají jen 0–47 s; zbytek (47–70 s) jsem neviděl, takže závěr a CTA jsou nejisté."
+}

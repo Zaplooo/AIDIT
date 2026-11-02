@@ -1,0 +1,75 @@
+{
+ "id": "yt-vlog",
+ "order": 11,
+ "name": "YouTube vlog",
+ "description": "Český YouTube vlog: svižný střih, hodně B-rollu (dron, GoPro, detaily rekvizit), úvodní teaser s hlavní větou, černé textové karty s kondenzovaným písmem, lower-thirdy a kapitolové karty. Hudba a SFX podporují střihy.",
+ "platform": "youtube",
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "cinematic",
+  "layout": "full",
+  "sfx": "soft",
+  "accent": "#F2B91E",
+  "music": "auto",
+  "zoom": true,
+  "cardKind": "dark"
+ },
+ "theme": {
+  "bg": "dark",
+  "font": "Bebas Neue",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "bold",
+  "font": "Bebas Neue",
+  "weight": 400,
+  "size": 56,
+  "color": "#FFFFFF",
+  "highlight": "#F2B91E",
+  "textCase": "upper",
+  "maxWords": 5,
+  "y": 0.82,
+  "animation": "fade-up",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 14,
+  "fullscreenShare": 0.85,
+  "brollShare": 0.5,
+  "preferredGfx": [
+   "chapter",
+   "note",
+   "side",
+   "pill",
+   "reveal",
+   "stat"
+  ],
+  "layouts": [
+   "full",
+   "full",
+   "split"
+  ],
+  "rules": [
+   "Začni 10–15s teaserem: rychlé B-roll záběry po ~1 s a hlavní věta jako žlutý headline (kondenzované verzálky) do 3 s.",
+   "Po teaseru zařaď černou textovou kartu (bg dark, headline, řádky postupně fade-in) a větu typu 'Takhle to celý začalo…'.",
+   "B-roll tvoří cca 50 % času: vkládej jako ilustraci řeči (detail telefonu, bot, rekvizit) na 0,5–1,5 s přes hlas mluvčího; dron/establishing shot při změně lokace.",
+   "Mluvčí full-frame, střídej s B-rollem každé 2–4 s; jump cuty bez pauz mezi slovy, občasný punch-in na pointu nebo vtip.",
+   "Chip (lower-third) vlevo dole s časem/místem při změně scény nebo lokace, bílý bold s obrysem, fade-out; používej střídmě.",
+   "Slam/velký nápis (např. název místa) jen při změně lokace nebo kapitoly, ne častěji než jednou za několik minut.",
+   "Přechody převážně tvrdé; fade do/z černé jen u textových karet; krátký whoosh SFX (soft) na přechodech a gagech.",
+   "Hudba jako tichý podkres pod řečí (řeč zřetelně nad hudbou), v teaseru hlasitější a rytmicky sladěná se střihy.",
+   "Nedělej statické grafiky na celé video, nepřeplácej obraz grafikami, nezvýrazňuj každé slovo v titulcích – jedna barva, akcent žlutou jen na klíčovou frázi.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Youtube_AW2_VWQsw0Q",
+  "Youtube_TuvFv_o6Vxg"
+ ]
+}

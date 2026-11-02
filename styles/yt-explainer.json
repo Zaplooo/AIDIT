@@ -1,0 +1,84 @@
+{
+ "id": "yt-explainer",
+ "order": 12,
+ "name": "YouTube explainer",
+ "description": "Klidný vzdělávací styl pro YouTube: mluvčí v rohu (pip) nad grafikami, screenshoty a mockupy jako důkaz řečeného, kapitoly a čisté vysvětlující grafiky. Jemné titulky, tmavý modrý tón s glow, výrazná hudba a decentní SFX na přechodech.",
+ "platform": "youtube",
+ "look": {
+  "tempo": "normal",
+  "jump": "hard",
+  "grade": "cinematic",
+  "layout": "full",
+  "sfx": "soft",
+  "accent": "#FFD84D",
+  "music": "chill",
+  "zoom": false,
+  "cardKind": "dark"
+ },
+ "theme": {
+  "bg": "brand",
+  "font": "Montserrat",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "word",
+  "font": "Montserrat",
+  "weight": 800,
+  "size": 44,
+  "color": "#FFFFFF",
+  "highlight": "#FFD84D",
+  "textCase": "normal",
+  "maxWords": 4,
+  "y": 0.78,
+  "animation": "fade-up",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 10,
+  "fullscreenShare": 0.4,
+  "brollShare": 0.45,
+  "preferredGfx": [
+   "chapter",
+   "cards",
+   "side",
+   "reveal",
+   "compare",
+   "gauge",
+   "crowd",
+   "prompt",
+   "chips",
+   "stat",
+   "list"
+  ],
+  "layouts": [
+   "pip",
+   "full",
+   "split"
+  ],
+  "rules": [
+   "Hook v prvních 5 s: mluvčí full, hned první věta bez úvodu; do 3 s headline s hlavním příslibem videa.",
+   "Poté střídej dlouhé úseky talking-head (full, 15–30 s bez střihu) s beaty, kde mluvčí zůstane v rohu (pip vlevo dole, zaoblený čtverec ~20 % šířky) a přes zbytek plochy běží grafika nebo B-roll; hlas nikdy nepřerušuj.",
+   "Na každé konkrétní tvrzení, číslo nebo nástroj dej důkaz: screenshot, mockup profilu/telefonu, screen recording nebo stat/graf. Beat nasaď přesně na řečené slovo, délka 2–5 s.",
+   "Struktura po kapitolách: při změně tématu vlož krátký beat step nebo headline s číslem/názvem kapitoly (např. '1. Hook'), na bílém (cream) nebo tmavém pozadí, jedna myšlenka na scénu.",
+   "Vysvětlující grafiky (list, compare, step) minimalistické: málo prvků, velké písmo, postupné objevování zleva doprava; nepřeplňuj.",
+   "Titulky klidné a menší: minimální bílé slovo, klíčová slova v kurzívě s patkami nebo modře; max 4 slova, bez křiklavých efektů.",
+   "Střihy tvrdé, bez whip a glitch přechodů; žádné punch zoomy na mluvčího, zoom jen na text ve screen recordingu.",
+   "Hudba chill/ambientní instrumentál hlasitě podložená pod řečí (ducking pod hlasem), SFX jen jemné pop/whoosh na nástup grafik a změny kapitol.",
+   "Nedělej rychlý hook střih po 0,5 s ani přeplněné grafiky; tempo zrychli jen krátce v úvodu (střih po 1–2 s), poté zklidni.",
+   "Konec: shrnutí a jednoduché CTA jako headline nebo chip, mluvčí zpět full.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Youtube_ZRRQFWT17B8",
+  "Youtube_2moKxAZjwCE",
+  "Youtube_n50KkoucMpU",
+  "Youtube_oa13Pqpdd5E",
+  "Youtube_CBY38V4vnOI"
+ ]
+}

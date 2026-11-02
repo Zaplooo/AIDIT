@@ -1,0 +1,41 @@
+{
+ "id": "creator",
+ "name": "Dynamický creator",
+ "order": 1,
+ "description": "Tmavý filmový obraz, velké VERZÁLKY ve dvou barvách, textové karty s čísly a kroky, zvukové efekty. Řeč bez mezer.",
+ "learnedFrom": [
+  "Instagram_DbS2vcfyQxx",
+  "Instagram_DXo0c5bkn53",
+  "Instagram_DdWZp6OyyqV",
+  "Instagram_DetyqaMyvhe"
+ ],
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "dark",
+  "layout": "full",
+  "sfx": "soft",
+  "accent": "#FF3B3B"
+ },
+ "captions": {
+  "mode": "bold",
+  "font": "Archivo Black",
+  "weight": 400,
+  "size": 74,
+  "color": "#FFFFFF",
+  "highlight": "#FF3B3B",
+  "textCase": "upper",
+  "maxWords": 3,
+  "y": 0.64,
+  "animation": "pop",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 9
+ },
+ "audio": {
+  "lufs": -14,
+  "truePeak": -1.5
+ }
+}

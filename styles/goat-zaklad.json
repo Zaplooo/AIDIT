@@ -1,0 +1,66 @@
+{
+ "id": "goat-zaklad",
+ "name": "Goat základ",
+ "order": 7,
+ "description": "Tvůj původní styl ze styl-strihu.md: čistý talking head, malá písmena, modré aktivní slovo, kamera stojí.",
+ "learnedFrom": [
+  "styl-strihu.md",
+  "komunikace_v1"
+ ],
+ "look": {
+  "tempo": "normal",
+  "jump": "hard",
+  "grade": "none",
+  "layout": "full",
+  "sfx": "off",
+  "accent": "#3D7BFF",
+  "music": "off",
+  "zoom": false
+ },
+ "captions": {
+  "mode": "goat",
+  "font": "Poppins",
+  "weight": 800,
+  "size": 51,
+  "color": "#FFFFFF",
+  "highlight": "#3D7BFF",
+  "textCase": "lower",
+  "maxWords": 3,
+  "y": 0.689,
+  "animation": "fade-up",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "none",
+  "every": 0
+ },
+ "audio": {
+  "lufs": -14,
+  "truePeak": -1.5
+ },
+ "platform": "reels",
+ "recipe": {
+  "beatsPerMinute": 10,
+  "fullscreenShare": 0.15,
+  "brollShare": 0.1,
+  "preferredGfx": [
+   "reveal",
+   "list",
+   "stat",
+   "cards"
+  ],
+  "layouts": [
+   "full"
+  ],
+  "rules": [
+   "Čistý talking head, kamera stojí (žádné přiblížení).",
+   "Grafika jen u čísel a výčtů, modrá paleta.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "theme": {
+  "font": "Inter Tight",
+  "serif": "Instrument Serif",
+  "bg": "dark"
+ }
+}

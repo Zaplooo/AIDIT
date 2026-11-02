@@ -1,0 +1,69 @@
+{
+ "id": "cinematic",
+ "name": "Filmový rámeček",
+ "order": 6,
+ "description": "Ty ve velkém zaobleném rámečku na černé (jako @austingeorgas), malé bílé titulky s kurzívou, filmový tón, B-roll ve stejném rámečku, zatmění na konci.",
+ "learnedFrom": [
+  "Instagram_C8iK3P-xZbk",
+  "Instagram_DAzCFqTRxWm",
+  "Instagram_DfA5xGzxFRy",
+  "reel @austingeorgas (geniální)"
+ ],
+ "look": {
+  "tempo": "fast",
+  "jump": "hard",
+  "grade": "cinematic",
+  "layout": "framed",
+  "sfx": "soft",
+  "accent": "#FFFFFF",
+  "music": "cinematic",
+  "zoom": false
+ },
+ "captions": {
+  "mode": "word",
+  "font": "Inter",
+  "weight": 600,
+  "size": 58,
+  "color": "#FFFFFF",
+  "highlight": "",
+  "textCase": "normal",
+  "maxWords": 2,
+  "y": 0.6,
+  "animation": "blur",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "mono",
+  "every": 10
+ },
+ "audio": {
+  "lufs": -14,
+  "truePeak": -1.5
+ },
+ "platform": "reels",
+ "theme": {
+  "bg": "dark",
+  "font": "Inter Tight",
+  "serif": "Instrument Serif"
+ },
+ "recipe": {
+  "beatsPerMinute": 22,
+  "fullscreenShare": 0.15,
+  "brollShare": 0.45,
+  "preferredGfx": [
+   "reveal",
+   "quote",
+   "pill",
+   "note"
+  ],
+  "layouts": [
+   "full"
+  ],
+  "rules": [
+   "Hlavně B-roll, který doslovně ilustruje větu (0,6–1,5 s), střídaný s mluvčím; grafika jen výjimečně (citát na černé).",
+   "Žádné štítky ani výrazné efekty – minimalismus, prémiový dojem.",
+   "Konec: pomalé zatmění.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ }
+}

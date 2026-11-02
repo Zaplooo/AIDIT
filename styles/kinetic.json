@@ -1,0 +1,76 @@
+{
+ "id": "kinetic",
+ "order": 5,
+ "name": "Kinetická typografie",
+ "description": "Kinetická typografie: obří slova přes celou obrazovku, jedno slovo = jeden beat v rytmu řeči a hudby. Výrazné barvy (červená, oranžová, žlutá) na tmavém teplém základu, tvrdé střihy, rychlé B-roll a mluvčí jen v hooku a střídavě. Hudba a SFX (whoosh, hit, riser) nesou rytmus.",
+ "platform": "reels",
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "warm",
+  "layout": "full",
+  "sfx": "bold",
+  "accent": "#FF2A1A",
+  "music": "energetic",
+  "zoom": true,
+  "cardKind": "dark"
+ },
+ "theme": {
+  "bg": "black",
+  "font": "Anton",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "bold",
+  "font": "Anton",
+  "weight": 400,
+  "size": 100,
+  "color": "#FFFFFF",
+  "highlight": "#FF2A1A",
+  "textCase": "upper",
+  "maxWords": 1,
+  "y": 0.55,
+  "animation": "pop",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 40,
+  "fullscreenShare": 0.55,
+  "brollShare": 0.35,
+  "preferredGfx": [
+   "slam",
+   "reveal",
+   "particles",
+   "chips",
+   "stat",
+   "versus"
+  ],
+  "layouts": [
+   "full",
+   "split"
+  ],
+  "rules": [
+   "Hook v první sekundě: mluvčí 1–1,5 s s údernou větou, pak hned tvrdý střih na slam s obřím slovem a riser/whoosh před střihem.",
+   "Základ jsou beaty slam: jedno klíčové slovo přes celou šířku, VERZÁLKY, každých 0,5–1 s v rytmu řeči; opakování slova jako stutter pro důraz.",
+   "Střídej mluvčího s typografií: po 2–4 s typografie se vrať na mluvčího na 1–3 s, nikdy neměj mluvčího déle než ~5 s v kuse.",
+   "Mezi slam beaty vkládej B-roll (detaily, obrazovky, předměty) na 0,3–1,5 s, přibližně třetinu času; B-roll má ilustrovat klíčové slovo.",
+   "Barvy: červená, oranžová, žlutá a bílá na tmavém teplém pozadí; klíčové slovo vždy v akcentní barvě, ostatní bílé.",
+   "Důrazná přiblížení (punch) jen na pointách, ne na každém střihu; střihy tvrdé, bez prolínaček, občas flash nebo glitch.",
+   "Každý slam doprovoď SFX hitem nebo whoosh; riser před zlomem a krátké ticho nebo drop před pointou.",
+   "Hudba je stěžejní a v popředí: úder slov i střihy zarovnej na beat; pod hlasem jen lehký ducking.",
+   "Seznamy a stat beaty používej zřídka (max. 1–2 za video), jako zklidnění mezi slam sekvencemi.",
+   "Nedělej dlouhé statické úseky ani malé titulky; nepřekrývej obličej mluvčího obřím textem, když mluví; na konci krátké CTA.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Instagram_DfA5LKHtbc2",
+  "Instagram_DcGS94iz3xD",
+  "Youtube_N63QJxNm8sc"
+ ]
+}

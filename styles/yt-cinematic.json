@@ -1,0 +1,72 @@
+{
+ "id": "yt-cinematic",
+ "order": 13,
+ "name": "YouTube filmový",
+ "description": "Filmový fan-edit dialogu: teplý kinematografický grade, malé elegantní serifové titulky u mluvčího se zeleně zvýrazněným klíčovým slovem, pomalejší dramatický rytmus řízený replikami. Hudba a jemné efekty podporují atmosféru.",
+ "platform": "youtube",
+ "look": {
+  "tempo": "calm",
+  "jump": "hard",
+  "grade": "cinematic",
+  "layout": "full",
+  "sfx": "soft",
+  "accent": "#00FF22",
+  "music": "cinematic",
+  "zoom": false,
+  "cardKind": "dark"
+ },
+ "theme": {
+  "bg": "black",
+  "font": "Inter",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "goat",
+  "font": "Inter",
+  "weight": 600,
+  "size": 44,
+  "color": "#FFFFFF",
+  "highlight": "#00FF22",
+  "textCase": "upper",
+  "maxWords": 5,
+  "y": 0.62,
+  "animation": "fade-up",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 6,
+  "fullscreenShare": 0.92,
+  "brollShare": 0.03,
+  "preferredGfx": [
+   "reveal",
+   "quote",
+   "pill",
+   "note",
+   "particles"
+  ],
+  "layouts": [
+   "full"
+  ],
+  "rules": [
+   "Mluvčí zůstává v plném záběru (full) po ~92 % času; střih dělej tvrdý a jen na replice nebo změně myšlenky, ne rytmicky.",
+   "Tempo pomalé a dramatické: ve střední části videa střih každé 3–6 s, zrychli až v závěru ke gradaci či pointě.",
+   "Titulky malé, elegantní serifové VERZÁLKY, slovo po slovu, max 5 slov; klíčová slova (peníze, čísla, jména, pointa) svítivě zeleně #00FF22.",
+   "Grafiku používej střídmě, cca 1 beat za 8–10 s: číslo/částka jako stat nebo slam ve zvýrazňující zelené s pop-inem; při opravě čísla ho škrtni a nahraď.",
+   "Max 1–2 štítky (chip) na video, jen u klíčového pojmu; žádné seznamy, chaty ani timery.",
+   "B-roll jen výjimečně (do ~3 %), pouze pokud přímo ilustruje řečené; jinak nepřerušuj záběr mluvčího.",
+   "Důrazné přiblížení (punch) jen na vrcholu pointy, maximálně 2x za video; jinak jen jemný pomalý push-in.",
+   "Hudba cinematic pod hlasem s duckingem při řeči; jemné SFX jen u klíčových čísel a pointy, žádné přehnané whoosh efekty.",
+   "Nedělej rychlé jump cuty uvnitř jednoho záběru ani hektické přechody; zachovej teplý filmový grade.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Youtube_c9UKnKVCaSU",
+  "Youtube_BaWrJajJRjA"
+ ]
+}

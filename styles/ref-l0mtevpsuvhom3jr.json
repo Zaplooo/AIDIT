@@ -1,0 +1,79 @@
+{
+ "id": "ref-l0mtevpsuvhom3jr",
+ "order": 0,
+ "name": "Papírový editorial",
+ "description": "Černobílá motion kinetická typografie na papírové textuře s halftone objekty (portrét, mozek, oko) a plynulými zoom přechody. Klíčová slova velká a tučná, zbytek malý a šedý. Vrchol na tmavém hřišti se světelným kuželem.",
+ "platform": "reels",
+ "look": {
+  "tempo": "normal",
+  "jump": "punch",
+  "grade": "dark",
+  "layout": "framed",
+  "sfx": "soft",
+  "accent": "#E58A8A",
+  "music": "cinematic",
+  "zoom": true,
+  "cardKind": "cream"
+ },
+ "theme": {
+  "bg": "cream",
+  "font": "Inter",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "word",
+  "font": "Inter",
+  "weight": 600,
+  "size": 64,
+  "color": "#111111",
+  "highlight": "#8A8A8A",
+  "textCase": "lower",
+  "maxWords": 4,
+  "y": 0.22,
+  "animation": "blur",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "cream",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 12,
+  "fullscreenShare": 0.6,
+  "brollShare": 0.9,
+  "preferredGfx": [
+   "headline",
+   "slam",
+   "quote",
+   "compare"
+  ],
+  "layouts": [
+   "full",
+   "split",
+   "pip"
+  ],
+  "rules": [
+   "Střihy jen cca 3 za 14 s; zbytek pohybu řeš pomalým zoomem a rack focusem (rozmazání→ostrost), ne tvrdými střihy.",
+   "Každá věta má vlastní vizuální metaforu: B-roll objekt (mozek, oko, hřiště) ilustruje klíčové slovo; B-roll tvoří téměř celý čas.",
+   "Texty jen u klíčových slov: jedno slovo velké, tučné, malými písmeny, zbytek fráze malý a šedý (headline/slam, 3–5 slov).",
+   "Mluvčí, pokud je, jen v malém framed rámečku se seříznutými rohy v halftone/černobílém look; většinu času ilustrace.",
+   "Začni světlou papírovou scénou a zakonči tmavým kontrastním vrcholem se zoom-outem; jeden soft whoosh u hlavního odhalení.",
+   "Nepoužívej barevné efekty, glitche, whip přechody ani emoji; paleta zůstává monochromní s jemným zrnem a vinětací.",
+   "Důrazné přiblížení (punch) jen na klíčová slova, maximálně 1× za 5 s."
+  ]
+ },
+ "learnedFrom": [
+  "https://www.youtube.com/shorts/C-yZlQXN3rQ"
+ ],
+ "summary": "14s svislé motion video bez talking-head záběrů. Černobílý, papírově texturovaný „editorial“ svět: portrét fotbalisty v halftone rámečku s ořezanými rohy, který se rozevře a odhalí 3D mozek, následuje mozek→oko (makro, rack focus) a nakonec zoom-out na tmavé hřiště, kde mozek v kruhu „skenuje“ plochu světelnými paprsky. Texty se objevují jen u klíčových slov (mind, space) v tučném grotesku, zbytek věty je malé šedé písmo. Snímek 0.0 s je pravděpodobně úvodní titulek/ukázka postupu (popisky „Shadows“, „Halftone texture“ s šipkami, růžový mozek) – nejspíš součást originálu nebo thumbnail, nejistě. Každý objekt metaforicky ilustruje vyprávění (hlava = mind, oko = vision, kruh+paprsky = space/field).",
+ "whyGreat": [
+  "Silná vizuální metafora k přepisu: mozek ↔ „mind“, oko ↔ „vision“, kruh s paprsky na hřišti ↔ „space / entire field“. Každá věta má svůj objekt.",
+  "Konzistentní monochromatická paleta a papírová textura (zrno, vinětace) – působí prémiově a jednotně.",
+  "Plynulá kontinuita: jeden objekt (mozek) prochází scénami, přechody jsou řešené pohybem kamery/zoomem, ne ostrými střihy, takže má video malý počet střihů a přesto je dynamické.",
+  "Kontrast: světlá papírová část → tmavé hřiště vytváří dramatický vrchol při slovech „entire field“.",
+  "Rack focus (rozmazání → ostrost) u oka a u textu vede pozornost a dodává filmový pocit hloubky.",
+  "Typografie s hierarchií: klíčové slovo velké a černé tučné, zbytek malý a světlý – diváka vede okem."
+ ],
+ "learnedAt": "2026-10-31T21:36:30.065Z"
+}

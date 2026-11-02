@@ -1,0 +1,76 @@
+{
+ "id": "mixfont",
+ "order": 4,
+ "name": "Mix fontů",
+ "description": "Elegantní typografický styl: tučná bezpatka střídaná serifovou kurzívou na klíčových slovech, bílá s červeným akcentem. Talking-head s kinetickým textem, krémové krokové karty (Step-1, Step-2), B-roll v zaobleném rámečku, rychlé bílé záblesky a výrazný zvukový design (hudba, whoosh, pop, hit).",
+ "platform": "reels",
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "cinematic",
+  "layout": "full",
+  "sfx": "bold",
+  "accent": "#B5121B",
+  "music": "auto",
+  "zoom": true,
+  "cardKind": "cream"
+ },
+ "theme": {
+  "bg": "cream",
+  "font": "Inter",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "mix",
+  "font": "Inter",
+  "weight": 600,
+  "size": 60,
+  "color": "#FFFFFF",
+  "highlight": "#B5121B",
+  "textCase": "normal",
+  "maxWords": 3,
+  "y": 0.42,
+  "animation": "blur",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "cream",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 14,
+  "fullscreenShare": 0.7,
+  "brollShare": 0.15,
+  "preferredGfx": [
+   "step",
+   "reveal",
+   "quote",
+   "note",
+   "list",
+   "chat",
+   "stat"
+  ],
+  "layouts": [
+   "full",
+   "split",
+   "pip"
+  ],
+  "rules": [
+   "Hook v prvních 3 s: velký headline s klíčovým slovem v červené/serifové kurzívě, případně hned chat (falešný komentář) kolem 3. s.",
+   "Každých ~10–15 s vlož krokovou kartu (step) na krémovém pozadí: malé 'Step-N' a pod ním velký název ultra-bold kurzívou v červené; předchází jí bílý flash a riser/whoosh.",
+   "Titulky po 1–3 slovech, běžná slova tučná bezpatka bílá, klíčová slova a emoce serifová kurzíva v červené; čísla kroků větší a červeně.",
+   "Střídej: dlouhé úseky mluvčího 5–10 s bez střihu s pomalým push-in, na důrazných místech punch zoom (100→110 %), ne víc než jeden za ~4 s.",
+   "B-roll max 2–5 s, nastupuje přesně na ilustrované slovo; používej buď framed vložku na krémovém pozadí, nebo fullscreen s tónováním do červené.",
+   "Zvuk je stěžejní: tichá hudba pod řečí (cca -6 dB pod hlasem, ducking), whoosh na každý přechod a kartu, pop na vstup grafiky, hit na červená klíčová slova, riser před bílým flashem, ping u notifikace/komentáře.",
+   "Drž přísnou paletu: krémová, červená, bílá, tmavě zelená/teal; žádné další barvy.",
+   "Nedávej dvě grafiky přes sebe ani titulky přes obličej; nepřeháněj počet efektů, SFX krátké 80–300 ms.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Instagram_De-IxT4u2Ow",
+  "Instagram_DcBwAjvoEqI",
+  "Instagram_DewTzCzxR9q"
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "id": "explainer",
+ "order": 3,
+ "name": "Vysvětlení s grafikou",
+ "description": "Rychlý vzdělávací talking-head s motion grafikou: mluvčí přes celou plochu, při vysvětlování split (grafika nahoře, mluvčí dole v zaobleném okně). Tmavé pozadí, bílé 1–2slovné titulky, nadpisy v bold sans + kurzivní serif s červeným akcentem, tichá hudba pod řečí a jemné SFX.",
+ "platform": "reels",
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "dark",
+  "layout": "full",
+  "sfx": "soft",
+  "accent": "#FFD84D",
+  "music": "chill",
+  "zoom": true,
+  "cardKind": "dark"
+ },
+ "theme": {
+  "bg": "brand",
+  "font": "Inter",
+  "serif": "Instrument Serif"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "word",
+  "font": "Inter",
+  "weight": 600,
+  "size": 64,
+  "color": "#FFFFFF",
+  "highlight": "#FFD84D",
+  "textCase": "normal",
+  "maxWords": 2,
+  "y": 0.62,
+  "animation": "pop",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 22,
+  "fullscreenShare": 0.5,
+  "brollShare": 0.2,
+  "preferredGfx": [
+   "chapter",
+   "cards",
+   "reveal",
+   "list",
+   "compare",
+   "gauge",
+   "crowd",
+   "step",
+   "chips",
+   "stat"
+  ],
+  "layouts": [
+   "full",
+   "split",
+   "pip"
+  ],
+  "rules": [
+   "Základ je mluvčí přes celou plochu. Split (grafika nahoře, mluvčí dole v zaobleném okně) použij jen při vysvětlování, zhruba 40–50 % času.",
+   "Změna vizuálu (nová grafika, přepnutí full a split, punch) zhruba každé 2–4 s, protože řeč je hustá.",
+   "Hook v prvních 3 s: beat headline nahoře (bold sans, jedno slovo v kurzivním serifu s červeným podtržením) a slib hned v první větě. Žádný úvod.",
+   "Každá sekce začíná beatem headline. Kroky a výčty ukazuj beaty step a list, aktivní položka ostrá, ostatní rozmazané.",
+   "Beat stat, compare nebo quote dej jen tam, kde mluvčí říká číslo, srovnání (staré vs. nové) nebo citaci. Zelená značí dobré, červená špatné.",
+   "Punch (důrazné přiblížení na hlavu, 130–170 %) dej na pointy a důrazná slova, každých 5–10 s, nikdy ne dvakrát po sobě.",
+   "B-roll jen jako ilustrace právě řečeného (UI karty, mockup telefonu, dokument), nikdy ne dlouho. Mluvčí musí zůstat vidět nebo slyšet.",
+   "Hudba tiše pod řečí, bez výrazného ducku. SFX jemné: whoosh na přepnutí layoutu, pop při objevení karty, tick při psaní, ding u kroku.",
+   "Nedávej grafiku na každé slovo ani dva split beaty bez změny. Nepoužívej ALL CAPS ani barevné zvýraznění titulků.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Instagram_Db-zJhiuXP3",
+  "Instagram_De_5mQ0R8PE"
+ ]
+}

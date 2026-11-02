@@ -1,0 +1,84 @@
+{
+ "id": "hype",
+ "order": 2,
+ "name": "Hype creator",
+ "description": "Tmavý kinematografický talking-head s hustou řečí (~220 slov/min) a těžkým motion-graphics layerem: 2–3slovní velké verzálkové titulky se září uprostřed, barevné zvýraznění klíčových slov (zelená úspěch, červená varování, zlatá nadpis), mockupy UI (Instagram, Stories, screen-recording), počítadla, odpočty a statistiky. Řídký fyzický střih, ale grafika se mění každých 0,5–1 s. Zvuk je zásadní: SFX synchronní s grafikou (whoosh, click, hit, riser) a výrazná hudba v popředí.",
+ "platform": "reels",
+ "look": {
+  "tempo": "fast",
+  "jump": "punch",
+  "grade": "cinematic",
+  "layout": "full",
+  "sfx": "bold",
+  "accent": "#3CFF2E",
+  "music": "energetic",
+  "zoom": true,
+  "cardKind": "dark"
+ },
+ "theme": {
+  "bg": "dark",
+  "font": "Archivo Black",
+  "serif": "DM Serif Display"
+ },
+ "captions": {
+  "enabled": true,
+  "mode": "bold",
+  "font": "Archivo Black",
+  "weight": 400,
+  "size": 74,
+  "color": "#FFFFFF",
+  "highlight": "#3CFF2E",
+  "textCase": "upper",
+  "maxWords": 3,
+  "y": 0.56,
+  "animation": "blur",
+  "shadow": true
+ },
+ "cards": {
+  "kind": "dark",
+  "every": 0
+ },
+ "recipe": {
+  "beatsPerMinute": 28,
+  "fullscreenShare": 0.45,
+  "brollShare": 0.45,
+  "preferredGfx": [
+   "reveal",
+   "particles",
+   "chips",
+   "stat",
+   "timer",
+   "prompt",
+   "versus",
+   "crowd",
+   "gauge",
+   "slam",
+   "chat",
+   "cards"
+  ],
+  "layouts": [
+   "full",
+   "split",
+   "pip"
+  ],
+  "rules": [
+   "Hook v prvních 0–3 s: velký headline s glow (2–4 slova) přes mluvčího, bez rozjezdu; hned za ním stat nebo počítadlo (např. 1.2M views).",
+   "Skoro každou větu doprovoď vizuálním důkazem: číslo → stat, čas/lhůta → timer (odpočet), výčet kroků → list nebo step, ukázka zprávy/příspěvku → chat nebo mockup, srovnání → compare.",
+   "Beat (grafika, štítek nebo B-roll) mění obraz každých ~0,5–1,5 s; fyzický střih řídký, mezi beaty nech mluvčího s jemným punch-in zoomem 105–115 % na klíčových slovech.",
+   "Cca 45 % času mluvčí na plnou plochu s titulky, cca 45 % mockupy/screen-recording/B-roll (full nebo split, pip pro mluvčího v rohu), zbytek čisté černé grafiky (timer, slam).",
+   "Barevná sémantika: zelená = úspěch/zisk, červená = varování/negativní, zlatá = nadpis kroku, bílá = neutrální. Slam na šokující slova (např. MILLIONS).",
+   "Každý krok tutoriálu uveď nadpisem (step) a ukaž ho doslovně v mockupu; kurzor/zvýraznění časuj na vyslovené slovo.",
+   "Zvuk je stěžejní: whoosh na každý přechod a swipe, click/pop na titulky a štítky, tikání u timeru, riser před zvratem a cinematic hit/impact na slam a odhalení. SFX přesně sync na nástup grafiky (±40–80 ms).",
+   "Hudba energická, v popředí/silný podkres (ne ducking na nulu), střihy a beaty zarovnej na její rytmus.",
+   "Nedělej statické pauzy delší než ~2 s bez změny v obraze; nepřeplňuj víc než jednu hlavní grafiku najednou; nepoužívej klasický stock B-roll, jen mockupy a ilustrace toho, co se říká.",
+   "Závěr: CTA grafika (comment slovo → pošlu ti to) jako headline nebo chat, případně loop na začátek.",
+   "Šablony střídej (nikdy dvakrát stejná po sobě); grafika musí sedět k tomu, co se právě říká."
+  ]
+ },
+ "learnedFrom": [
+  "Instagram_DbS2vcfyQxx",
+  "Instagram_DXo0c5bkn53",
+  "Instagram_DdWZp6OyyqV",
+  "Instagram_DetyqaMyvhe"
+ ]
+}

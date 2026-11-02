@@ -1,0 +1,20 @@
+import puppeteer from 'puppeteer-core';
+const [id, out] = process.argv.slice(2);
+const browser = await puppeteer.launch({executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: 'new'});
+const page = await browser.newPage();
+await page.setViewport({width: 1600, height: 960});
+const errors = [];
+page.on('pageerror', (e) => errors.push(e.message));
+await page.goto(`http://localhost:5175/#p/${id}`, {waitUntil: 'networkidle2'});
+await page.waitForSelector('.editor');
+await new Promise((r) => setTimeout(r, 2500));
+(await page.$$('.tabs button'))[2].click();
+await new Promise((r) => setTimeout(r, 500));
+for (const b of await page.$$('.tab-body button')) if ((await b.evaluate((n) => n.textContent)).trim().endsWith('Grafika')) { await b.click(); break; }
+await new Promise((r) => setTimeout(r, 1500));
+await page.screenshot({path: out});
+const n0 = await page.$$eval('.card-item', (x) => x.length);
+await (await page.$('.tpl'))?.click();
+await new Promise((r) => setTimeout(r, 800));
+console.log('beatů před/po přidání:', n0, await page.$$eval('.card-item', (x) => x.length), errors.join(' | ') || 'bez chyb');
+await browser.close();
