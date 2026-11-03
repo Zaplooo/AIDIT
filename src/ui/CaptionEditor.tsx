@@ -73,6 +73,8 @@ export const CaptionEditor: React.FC<{style: CaptionStyle; set: (p: Patch) => vo
 					<Seg
 						value={s.animation}
 						options={[
+							['rise', 'Plynule (slova se vynoří)'],
+							['zoom', 'Zoom slova'],
 							['typewriter', 'Slovo po slově'],
 							['karaoke', 'Karaoke'],
 							['bounce', 'Bounce'],

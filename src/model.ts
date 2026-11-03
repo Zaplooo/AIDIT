@@ -31,7 +31,7 @@ export type CaptionStyle = {
 	textCase: 'lower' | 'upper' | 'normal';
 	maxWords: number;
 	y: number;
-	animation: 'fade-up' | 'pop' | 'none' | 'blur' | 'karaoke' | 'typewriter' | 'bounce' | 'slide';
+	animation: 'fade-up' | 'pop' | 'none' | 'blur' | 'karaoke' | 'typewriter' | 'bounce' | 'slide' | 'rise' | 'zoom';
 	emoji?: boolean; // emoji u klíčových slov (vybírá AI -> plan.emojis)
 	shadow: boolean;
 	// vlastní kombinace (mode 'custom' – a funguje i v ostatních režimech)

@@ -162,12 +162,12 @@ export const Speaker: React.FC<{src: string | null; mode: 'full' | 'framed' | 's
 		return <div style={{position: 'absolute', left: (W - w) / 2, top: (H - h) / 2 - H * 0.015, width: w, height: h, borderRadius: 40 * u, overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,0.6)'}}>{video}</div>;
 	}
 	if (mode === 'split') {
-		const k = beat ? interpolate(t - beat.start, [0, 0.25], [0, 1], {...clamp, easing: EASE}) : 1;
+		const k = beat ? Math.min(interpolate(t - beat.start, [0, 0.4], [0, 1], {...clamp, easing: EASE}), interpolate(t, [beat.end - 0.35, beat.end], [1, 0], {...clamp, easing: Easing.inOut(Easing.cubic)})) : 1;
 		const top = interpolate(k, [0, 1], [0, H * 0.48]);
 		return <div style={{position: 'absolute', left: 0, top, width: W, height: H - top, overflow: 'hidden', borderTop: `${4 * u}px solid ${k > 0.02 ? accent : 'transparent'}`}}>{video}</div>;
 	}
 	if (mode === 'pip') {
-		const k = beat ? interpolate(t - beat.start, [0, 0.3], [0, 1], {...clamp, easing: EASE}) : 1;
+		const k = beat ? Math.min(interpolate(t - beat.start, [0, 0.45], [0, 1], {...clamp, easing: EASE}), interpolate(t, [beat.end - 0.4, beat.end], [1, 0], {...clamp, easing: Easing.inOut(Easing.cubic)})) : 1;
 		const s = Math.min(W, H) * 0.34;
 		return (
 			<div
@@ -195,20 +195,22 @@ export const Broll: React.FC<{src: string; dur: number; framed: boolean; W: numb
 	const f = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const t = f / fps;
-	const k = interpolate(t, [0, 0.12], [0, 1], clamp);
-	const o = interpolate(t, [dur - 0.08, dur], [1, 0], clamp);
-	const style: React.CSSProperties = {width: '100%', height: '100%', objectFit: 'cover'};
+	// prolnutí 0,3 s s rozostřením, pomalý filmový posun (jako u profi střihu), měkký odchod zpět na mluvčího
+	const k = interpolate(t, [0, Math.min(0.3, dur * 0.25)], [0, 1], {...clamp, easing: EASE});
+	const o = interpolate(t, [dur - Math.min(0.25, dur * 0.2), dur], [1, 0], {...clamp, easing: Easing.inOut(Easing.cubic)});
+	const push = interpolate(t, [0, Math.max(dur, 0.5)], [1, 1.06]);
+	const style: React.CSSProperties = {width: '100%', height: '100%', objectFit: 'cover', scale: push.toFixed(4)};
 	if (framed) {
 		const w = W * 0.94;
 		const h = W > H ? H * 0.86 : H * 0.64;
 		return (
-			<div style={{position: 'absolute', left: (W - w) / 2, top: (H - h) / 2 - H * 0.015, width: w, height: h, borderRadius: 40 * (Math.min(W, H) / 1080), overflow: 'hidden', opacity: Math.min(k, o)}}>
+			<div style={{position: 'absolute', left: (W - w) / 2, top: (H - h) / 2 - H * 0.015, width: w, height: h, borderRadius: 40 * (Math.min(W, H) / 1080), overflow: 'hidden', opacity: Math.min(k, o), filter: `blur(${((1 - Math.min(k, o)) * 8).toFixed(2)}px)`}}>
 				<OffthreadVideo src={src} muted style={style} />
 			</div>
 		);
 	}
 	return (
-		<AbsoluteFill style={{opacity: Math.min(k, o), scale: String(interpolate(k, [0, 1], [1.06, 1]))}}>
+		<AbsoluteFill style={{opacity: Math.min(k, o), scale: String(interpolate(k, [0, 1], [1.04, 1])), filter: `blur(${((1 - Math.min(k, o)) * 8).toFixed(2)}px)`}}>
 			<OffthreadVideo src={src} muted style={style} />
 		</AbsoluteFill>
 	);
@@ -225,7 +227,7 @@ export const GfxLayer: React.FC<{beat: LaidBeat; t: number; fps: number; W: numb
 	const lay = beat.layout ?? 'full';
 	if (lay === 'split') {
 		// horní polovina: grafika (zmenšená celá scéna), dolní polovina: mluvčí
-		const k = interpolate(lt, [0, 0.25], [0, 1], {...clamp, easing: EASE});
+		const k = Math.min(interpolate(lt, [0, 0.4], [0, 1], {...clamp, easing: EASE}), interpolate(lt, [dur - 0.35, dur], [1, 0], {...clamp, easing: Easing.inOut(Easing.cubic)}));
 		const h = H * 0.48;
 		return (
 			<div style={{position: 'absolute', left: 0, top: 0, width: W, height: h * k, overflow: 'hidden'}}>
@@ -273,12 +275,12 @@ export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: s
 	if (!g) return null;
 	const size = style.size * (Math.min(W, H) / 1080);
 	const lt = t - g.start;
-	const pop = spring({frame: lt * fps, fps, config: {damping: 13, stiffness: 220, mass: 0.7}});
+	const pop = spring({frame: lt * fps, fps, config: {damping: 16, stiffness: 190, mass: 0.7}});
 	// „blur“: nástup s rozostřením + pružinou a odchod s rozostřením (jako v referencích)
 	const blurIn = style.animation === 'blur';
 	const outK = blurIn && g.end - t < 0.12 ? (g.end - t) / 0.12 : 1;
 	// slovo po slovu (karaoke / psací stroj / bounce): celý řádek stojí, animují se jednotlivá slova
-	const perWord = style.animation === 'karaoke' || style.animation === 'typewriter' || style.animation === 'bounce';
+	const perWord = PER_WORD.has(style.animation);
 	const pin = style.animation === 'none' || perWord ? 1 : style.animation === 'pop' || blurIn ? Math.min(pop, outK) : smooth(lt / 0.2);
 	const scale = style.animation === 'pop' ? interpolate(pop, [0, 1], [0.8, 1]) : blurIn ? interpolate(pop, [0, 1], [0.9, 1]) : 1;
 	const lift = style.animation === 'fade-up' ? (1 - pin) * size * 0.14 : 0;
@@ -322,13 +324,24 @@ export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: s
 };
 
 // animace jednoho slova: karaoke (nevyslovená ztlumená), psací stroj (slova přibývají), bounce (vyslovené slovo vyskočí)
+const PER_WORD = new Set(['karaoke', 'typewriter', 'bounce', 'rise', 'zoom']);
 const WordAnim: React.FC<{w: TlWord; style: CaptionStyle; t: number; fps: number; children: React.ReactNode}> = ({w, style, t, fps, children}) => {
 	const a = style.animation;
-	if (a !== 'karaoke' && a !== 'typewriter' && a !== 'bounce') return <>{children}</>;
+	if (!PER_WORD.has(a)) return <>{children}</>;
 	const said = smooth((t - w.start + 0.03) / 0.1);
+	if (a === 'rise') {
+		// slovo se plynule vynoří zespodu z rozostření (bez skoku)
+		const r = interpolate(t, [w.start - 0.06, w.start + 0.22], [0, 1], {...clamp, easing: EASE});
+		return <span style={{display: 'inline-block', opacity: r, translate: `0 ${((1 - r) * 0.35).toFixed(3)}em`, filter: `blur(${((1 - r) * 6).toFixed(2)}px)`}}>{children}</span>;
+	}
+	if (a === 'zoom') {
+		// vyslovené slovo dosedne z mírného zvětšení
+		const r = interpolate(t, [w.start - 0.04, w.start + 0.2], [0, 1], {...clamp, easing: EASE});
+		return <span style={{display: 'inline-block', opacity: Math.min(1, r * 2), scale: String(interpolate(r, [0, 1], [1.35, 1]))}}>{children}</span>;
+	}
 	if (a === 'typewriter') return <span style={{opacity: t >= w.start - 0.02 ? 1 : 0}}>{children}</span>;
 	if (a === 'karaoke') return <span style={{opacity: 0.38 + 0.62 * said}}>{children}</span>;
-	const k = spring({frame: Math.max(0, (t - w.start + 0.03) * fps), fps, config: {damping: 9, stiffness: 260, mass: 0.6}});
+	const k = spring({frame: Math.max(0, (t - w.start + 0.03) * fps), fps, config: {damping: 12, stiffness: 230, mass: 0.6}});
 	return <span style={{display: 'inline-block', opacity: t >= w.start - 0.03 ? 1 : 0, scale: String(interpolate(k, [0, 1], [0.55, 1])), translate: `0 ${((1 - k) * 18).toFixed(1)}px`}}>{children}</span>;
 };
 
@@ -345,14 +358,14 @@ const CapWord: React.FC<{w: TlWord; next?: TlWord; style: CaptionStyle; size: nu
 		const alt = style.alt;
 		const isAlt = Boolean(alt && (alt.every === 'alternate' ? index % 2 === 1 : alt.every === 'third' ? index % 3 === 1 : alt.every === 'keyword' ? w.key : false));
 		const a = style.active;
-		const on = smooth((t - w.start + 0.02) / 0.08);
-		const off = next ? smooth((t - next.start + 0.02) / 0.08) : 0;
+		const on = smooth((t - w.start + 0.03) / 0.12);
+		const off = next ? smooth((t - next.start + 0.03) / 0.12) : 0;
 		const k = a ? Math.max(0, on - off) : 0;
 		const font = k > 0.5 && a?.font ? a.font : isAlt && alt?.font ? alt.font : style.font;
 		const italic = (k > 0.5 && a?.italic) || (isAlt && alt?.italic) || style.italic;
 		const base = isAlt && alt?.color ? alt.color : w.key && style.highlight ? style.highlight : style.color;
 		const color = a?.color && k > 0 ? interpolateColors(k, [0, 1], [base, a.color]) : base;
-		const box = a?.box && k > 0.5 ? a.box : 'transparent';
+		const box = a?.box && k > 0 ? interpolateColors(k, [0, 1], [a.box.slice(0, 7) + '00', a.box]) : 'transparent';
 		return (
 			<span
 				style={{

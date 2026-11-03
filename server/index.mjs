@@ -30,8 +30,8 @@ fs.mkdirSync(CLIENTS, {recursive: true});
 // Pauzy podle tempa: ticho delší než maxPause se ZKRÁTÍ (ne smaže) – uvnitř věty na intraKeep, mezi větami na breakKeep.
 // Reference mají mezery mezi slovy 0,05–0,12 s, ale mezi větami krátký nádech – jinak věty „naskakují z ničeho nic“.
 const TEMPO = {
-	calm: {maxPause: 0.6, intraKeep: 0.3, breakKeep: 0.45},
-	normal: {maxPause: 0.4, intraKeep: 0.18, breakKeep: 0.32},
+	calm: {maxPause: 0.65, intraKeep: 0.3, breakKeep: 0.5},
+	normal: {maxPause: 0.45, intraKeep: 0.22, breakKeep: 0.38},
 	fast: {maxPause: 0.28, intraKeep: 0.12, breakKeep: 0.24},
 };
 

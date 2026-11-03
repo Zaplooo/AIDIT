@@ -88,13 +88,16 @@ const rnd = (i: number) => {
 
 // ---------------------------------------------------------------- nástup, drift, odchod
 export const Enter: React.FC<{t: number; dur: number; children: React.ReactNode; full?: boolean}> = ({t, dur, children, full}) => {
-	const i = interpolate(t, [0, 0.24], [0, 1], {...C, easing: EASE});
-	const o = interpolate(t, [dur - 0.18, dur], [1, 0], {...C, easing: Easing.in(Easing.quad)});
+	// nástup 0,45 s a odchod 0,35 s s jemným rozostřením – grafika se do záběru „rozplyne“, ne cvakne
+	const io = Math.min(0.45, dur * 0.3);
+	const oo = Math.min(0.35, dur * 0.25);
+	const i = interpolate(t, [0, io], [0, 1], {...C, easing: EASE});
+	const o = interpolate(t, [dur - oo, dur], [1, 0], {...C, easing: Easing.inOut(Easing.cubic)});
 	const k = Math.min(i, o);
 	// jemný drift po celou dobu – grafika nikdy nestojí (stojící obraz působí jako zaseknutí)
-	const drift = interpolate(t, [0, Math.max(dur, 0.5)], [1, 1.045]);
+	const drift = interpolate(t, [0, Math.max(dur, 0.5)], [1, 1.03]);
 	return (
-		<AbsoluteFill style={{opacity: full ? Math.min(1, k * 1.4) : k, scale: String(interpolate(i, [0, 1], [1.08, 1]) * interpolate(o, [0, 1], [0.97, 1]) * drift), filter: `blur(${((1 - k) * 14).toFixed(2)}px)`}}>
+		<AbsoluteFill style={{opacity: full ? Math.min(1, k * 1.25) : k, scale: String(interpolate(i, [0, 1], [1.05, 1]) * interpolate(o, [0, 1], [1.03, 1]) * drift), filter: `blur(${((1 - k) * 10).toFixed(2)}px)`}}>
 			{children}
 		</AbsoluteFill>
 	);

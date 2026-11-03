@@ -36,11 +36,11 @@ PRAVIDLA
 - layout: "full" (grafika přes celou obrazovku, hlas běží dál), "split" (nahoře grafika, dole mluvčí – jen u Reels a jen na tu chvíli),
   "pip" (grafika přes celou plochu a mluvčí v kolečku v rohu – YouTube 16:9), "overlay" (jen pro versus, side, pill – přes záběr mluvčího).
 - B-roll (kind "broll"): když mluvčí zmíní konkrétní situaci/věc/pocit („jdu spát“, „telefon v posteli“, „mám se krásně“, „jídlo“).
-  broll.query = krátké anglické hledání pro stock web (2–4 slova, např. "woman sleeping bed"), broll.alt = záložní hledání.
+  broll.query = krátké anglické hledání pro stock web (2–4 slova popisující, co je VIDĚT, např. "woman sleeping bed", ne abstraktní pojmy), broll.alt = jiné hledání stejné situace (jiná slova / jiný úhel pohledu).
 - Štítek (kind "chip"): krátký fakt přes záběr mluvčího (2–5 slov), např. „60–90 min před spaním“.
 - Přiblížení (kind "punch"): důrazná věta/pointa, mluvčí zůstává vidět (1–3 s). Jen když to recept dovoluje.
 - Když mluvčí ukazuje předmět („tato maska“, „těchto brýlí“), NEZAKRÝVEJ ho grafikou ani B-rollem – dej chip nebo nic.
-- Délky: gfx 1,8–3,5 s (musí se stihnout přečíst), broll 1,2–2,6 s, chip 1,5–3 s, punch 1–3 s. Beaty se nepřekrývají (chip může být přes punch).
+- Délky: gfx 2,4–4,5 s (musí se v klidu přečíst a nesmí to působit uspěchaně), broll 1,8–3,2 s, chip 2–3,5 s, punch 1–3 s. Mezi dvěma grafikami/B-rolly nech aspoň ~2 s mluvčího, ať střih dýchá. Beaty se nepřekrývají (chip může být přes punch).
 - Hustotu a typy ber z receptu. Nepřeplácej: video musí dýchat, mluvčí je hlavní.
 - wi = index slova, kde beat začíná (slovo, které věc pojmenovává).
 - mood: nálada hudby (energetic, motivating, hiphop, lofi, chill, cinematic, dark, happy, corporate, emotional).

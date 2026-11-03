@@ -220,6 +220,74 @@
  ],
  "captions": [
   {
+   "id": "smooth",
+   "label": "Plynulé (Apple)",
+   "desc": "slova se jemně vynoří z rozostření, čisté a prémiové",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Inter",
+    "size": 62,
+    "textCase": "normal",
+    "maxWords": 4,
+    "animation": "rise",
+    "active": {
+     "color": "$color"
+    }
+   }
+  },
+  {
+   "id": "glidebox",
+   "label": "Box za slovem",
+   "desc": "barevný box plynule přejíždí za vysloveným slovem",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Montserrat",
+    "size": 66,
+    "textCase": "upper",
+    "maxWords": 3,
+    "animation": "fade-up",
+    "stroke": 0,
+    "active": {
+     "box": "$color",
+     "color": "#FFFFFF",
+     "scale": 1.06
+    }
+   }
+  },
+  {
+   "id": "zoomword",
+   "label": "Zoom slova",
+   "desc": "každé slovo dosedne z přiblížení, velké a výrazné",
+   "hl": "#FFD84D",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Anton",
+    "size": 92,
+    "textCase": "upper",
+    "maxWords": 2,
+    "animation": "zoom",
+    "stroke": 8,
+    "strokeColor": "#000000",
+    "active": {
+     "color": "#FFD84D"
+    }
+   }
+  },
+  {
    "id": "wordbyword",
    "label": "Slovo po slově",
    "desc": "slova naskakují přesně, jak je říkáš",
