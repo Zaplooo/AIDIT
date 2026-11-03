@@ -119,15 +119,14 @@ export const AiPanel: React.FC<{ctx: Ctx; L: Layout}> = ({ctx, L}) => {
 
 // ---------------------------------------------------------------- pravý panel: všechny možnosti v záložkách
 const TABS = [
-	{key: 'style', icon: 'style', label: 'Styl'},
 	{key: 'captions', icon: 'text', label: 'Titulky'},
 	{key: 'cards', icon: 'card', label: 'Grafika'},
 	{key: 'sound', icon: 'sfx', label: 'Zvuk'},
-	{key: 'cut', icon: 'clock', label: 'Délka a tempo'},
+	{key: 'style', icon: 'style', label: 'Styl a délka'},
 ] as const;
 
 export const SidePanels: React.FC<{ctx: Ctx; L: Layout}> = ({ctx, L}) => {
-	const [tab, setTab] = React.useState<(typeof TABS)[number]['key']>('style');
+	const [tab, setTab] = React.useState<(typeof TABS)[number]['key']>('captions');
 	return (
 		<aside className="side">
 			<nav className="tabs">
@@ -139,11 +138,16 @@ export const SidePanels: React.FC<{ctx: Ctx; L: Layout}> = ({ctx, L}) => {
 				))}
 			</nav>
 			<div className="tab-body">
-				{tab === 'style' ? <StyleTab ctx={ctx} /> : null}
+				{tab === 'style' ? (
+					<>
+						<CutTab ctx={ctx} />
+						<div className="tab-sep" />
+						<StyleTab ctx={ctx} />
+					</>
+				) : null}
 				{tab === 'captions' ? <CaptionsTab ctx={ctx} L={L} /> : null}
 				{tab === 'cards' ? <CardsTab ctx={ctx} L={L} /> : null}
 				{tab === 'sound' ? <SoundTab ctx={ctx} /> : null}
-				{tab === 'cut' ? <CutTab ctx={ctx} /> : null}
 			</div>
 		</aside>
 	);
@@ -275,11 +279,23 @@ const CaptionsTab: React.FC<{ctx: Ctx; L: Layout}> = ({ctx, L}) => {
 			<Field label="Styl titulků" hint="Najeď = ukázka, klik = použít. Pak si cokoliv dolaď níž (nebo napiš AI dole, jak je chceš).">
 				<div className="cap-presets">
 					{CATALOG.captions.map((cp) => (
-						<CaptionCard key={cp.id} id={cp.id} setup={setupOf(p)} onClick={() => set({alt: undefined, active: undefined, stroke: undefined, strokeColor: undefined, box: undefined, italic: undefined, ...captionFromSetup({...setupOf(p), caption: cp.id}), enabled: true})} />
+						<CaptionCard key={cp.id} id={cp.id} setup={setupOf(p)} onClick={() => {
+							set({alt: undefined, active: undefined, stroke: undefined, strokeColor: undefined, box: undefined, italic: undefined, emoji: undefined, ...captionFromSetup({...setupOf(p), caption: cp.id}), enabled: true});
+							// styl s emoji: AI doplní emoji ke klíčovým slovům
+							if ((cp.style as {emoji?: boolean}).emoji && !Object.keys(p.plan.emojis ?? {}).length) ctx.run('AI vybírá emoji ke klíčovým slovům', () => api.emoji(p.id));
+						}} />
 					))}
 				</div>
 			</Field>
-			<CaptionEditor style={c} set={set} accent={p.look.theme?.brand ?? p.look.accent} />
+			<CaptionEditor
+				style={c}
+				set={set}
+				accent={p.look.theme?.brand ?? p.look.accent}
+				onEmoji={(on) => (on && !Object.keys(p.plan.emojis ?? {}).length ? ctx.run('AI vybírá emoji ke klíčovým slovům', () => api.emoji(p.id)) : set({emoji: on}))}
+			/>
+			<button className="ghost small" style={{marginTop: 8}} onClick={() => downloadSrt(p.name, L)}>
+				<Icon name="export" /> Stáhnout titulky (SRT)
+			</button>
 			<Field label="Text titulků" hint="Klikni na titulek a oprav ho. Barevná slova = klíčová slova od AI (klikni na slovo v náhledu níže).">
 				<div className="cap-list">
 					{L.groups.map((g) => {
@@ -659,3 +675,20 @@ const CutTab: React.FC<{ctx: Ctx}> = ({ctx}) => {
 		</>
 	);
 };
+
+// titulky jako SRT (pro YouTube, Premiere, CapCut…)
+function downloadSrt(name: string, L: Layout) {
+	const ts = (x: number) => {
+		const ms = Math.round(x * 1000);
+		const h = Math.floor(ms / 3600000);
+		const m = Math.floor((ms % 3600000) / 60000);
+		const sec = Math.floor((ms % 60000) / 1000);
+		return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`;
+	};
+	const srt = L.groups.map((g, i) => `${i + 1}\n${ts(g.start)} --> ${ts(g.end)}\n${g.words.map((w) => w.text).join(' ')}\n`).join('\n');
+	const a = document.createElement('a');
+	a.href = URL.createObjectURL(new Blob([srt], {type: 'text/plain;charset=utf-8'}));
+	a.download = `${name || 'titulky'}.srt`;
+	a.click();
+	setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}

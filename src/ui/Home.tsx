@@ -3,11 +3,12 @@ import {api, Client, Meta, Style} from '../api';
 import {RefBox, TypeGrid} from './NewVideo';
 import {label} from '../setup';
 import {LibraryLeft, LibraryRight} from './Library';
+import {TopNav} from './TopNav';
 import {Icon} from './Mocks';
 
 const fmtDur = (s?: number) => (s ? `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}` : '');
 
-// Hlavní stránka: vlevo knihovna (grafika, fonty, hudba, efekty), uprostřed klienti a nové video, vpravo ukázky hooků a zoomů.
+// Hlavní stránka – jen to podstatné: odkaz, typ videa, poslední videa, klienti. Knihovna a „Můj styl“ jsou v horním menu.
 export const Home: React.FC = () => {
 	const [clients, setClients] = React.useState<Client[]>([]);
 	const [projects, setProjects] = React.useState<Meta[]>([]);
@@ -20,14 +21,12 @@ export const Home: React.FC = () => {
 	}, []);
 	const loose = projects.filter((p) => !p.clientId);
 	return (
-		<div className="home3">
-			<LibraryLeft />
+		<div className="home-v8">
+			<TopNav />
 			<main className="home-main">
-				<header className="home-head">
-					<div className="brand big">
-						<img src="/aidit-logo.png" alt="" className="brand-logo" /> AIDIT
-					</div>
-					<span className="muted">AI střih videí – reels, YouTube, produkty, nemovitosti, reklamy</span>
+				<header className="hero-v8">
+					<h1>Co dnes stříháme?</h1>
+					<span className="muted">Nahraj video, vyber typ nebo vlož odkaz – AIDIT ho sestříhá. Všechno pak upravíš v timeline.</span>
 				</header>
 
 				<RefBox />
@@ -39,6 +38,19 @@ export const Home: React.FC = () => {
 					</div>
 					<TypeGrid />
 				</section>
+
+				{projects.length ? (
+					<section>
+						<div className="sec-head">
+							<h3>Poslední videa</h3>
+						</div>
+						<div className="recent-grid">
+							{projects.slice(0, 8).map((p) => (
+								<VideoCard key={p.id} p={p} />
+							))}
+						</div>
+					</section>
+				) : null}
 
 				{learned.length ? (
 					<section>
@@ -87,20 +99,19 @@ export const Home: React.FC = () => {
 					)}
 				</section>
 
-				{loose.length ? (
+				{loose.length > 8 ? (
 					<section>
 						<div className="sec-head">
-							<h3>Videa bez klienta</h3>
+							<h3>Všechna videa bez klienta</h3>
 						</div>
 						<div className="proj-list">
-							{loose.slice(0, 12).map((p) => (
+							{loose.map((p) => (
 								<ProjectRow key={p.id} p={p} />
 							))}
 						</div>
 					</section>
 				) : null}
 			</main>
-			<LibraryRight />
 			{creating ? <NewClient onClose={() => setCreating(false)} /> : null}
 		</div>
 	);
@@ -159,3 +170,28 @@ const NewClient: React.FC<{onClose: () => void}> = ({onClose}) => {
 		</div>
 	);
 };
+
+// karta videa s náhledem (poslední videa)
+const VideoCard: React.FC<{p: Meta}> = ({p}) => (
+	<div className="video-card" onClick={() => (location.hash = `#p/${p.id}`)}>
+		<div className="vc-thumb">
+			{p.status === 'ready' ? <video src={`/media/${p.id}/base_preview.mp4#t=1`} muted preload="metadata" /> : <span className="muted small">{p.status === 'error' ? 'chyba' : 'zpracovává se…'}</span>}
+		</div>
+		<b>{p.name}</b>
+		<span className="muted small">
+			{new Date(p.createdAt).toLocaleDateString('cs-CZ')}
+			{p.answers?.videoType ? ` · ${p.answers.videoType}` : ''}
+		</span>
+	</div>
+);
+
+// Knihovna jako samostatná stránka (grafika, fonty, hudba, efekty, hooky, zoomy, můj styl)
+export const LibraryPage: React.FC = () => (
+	<div className="home-v8">
+		<TopNav />
+		<div className="library-page">
+			<LibraryLeft />
+			<LibraryRight />
+		</div>
+	</div>
+);

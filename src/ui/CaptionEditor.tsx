@@ -39,7 +39,7 @@ const Seg = <T extends string>({value, options, onChange}: {value: T; options: [
 	</div>
 );
 
-export const CaptionEditor: React.FC<{style: CaptionStyle; set: (p: Patch) => void; accent: string}> = ({style: s, set, accent}) => {
+export const CaptionEditor: React.FC<{style: CaptionStyle; set: (p: Patch) => void; accent: string; onEmoji?: (on: boolean) => void}> = ({style: s, set, accent, onEmoji}) => {
 	// každá změna „vlastní“ volby převede titulky do vlastního režimu (se zachováním vzhledu)
 	const custom = (p: Patch) => set({...toCustom(s), ...p});
 	const alt = s.mode === 'custom' ? s.alt : toCustom(s).alt;
@@ -70,9 +70,31 @@ export const CaptionEditor: React.FC<{style: CaptionStyle; set: (p: Patch) => vo
 				</div>
 				<div className="ce-row">
 					<span>Animace</span>
-					<Seg value={s.animation} options={[['pop', 'Pružina'], ['fade-up', 'Vyjede'], ['blur', 'Rozostření'], ['none', 'Žádná']]} onChange={(v) => set({animation: v})} />
+					<Seg
+						value={s.animation}
+						options={[
+							['typewriter', 'Slovo po slově'],
+							['karaoke', 'Karaoke'],
+							['bounce', 'Bounce'],
+							['pop', 'Pružina'],
+							['fade-up', 'Vyjede'],
+							['slide', 'Zleva'],
+							['blur', 'Rozostření'],
+							['none', 'Žádná'],
+						]}
+						onChange={(v) => set({animation: v})}
+					/>
 				</div>
 			</div>
+			{onEmoji ? (
+				<div className="ce-group">
+					<b>Emoji</b>
+					<div className="ce-row">
+						<span>U klíčových slov</span>
+						<Seg value={s.emoji ? 'on' : 'off'} options={[['on', 'Ano (vybere AI)'], ['off', 'Ne']]} onChange={(v) => onEmoji(v === 'on')} />
+					</div>
+				</div>
+			) : null}
 			<div className="ce-group">
 				<b>Barvy a čitelnost</b>
 				<div className="ce-row">

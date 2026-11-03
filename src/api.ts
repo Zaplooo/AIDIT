@@ -82,6 +82,7 @@ export const api = {
 	savePrefs: (p: Partial<Prefs>) => fetch('/api/prefs', send('PUT', p)).then(j<Prefs>),
 	styleSetup: (id: string) => fetch(`/api/styles/${id}/setup`).then(j<Setup>),
 	uploadSfx: (file: File, cat: string) => xhrUpload<{id: string; file: string; cat: string; name: string; own: boolean}>('/api/sfx', {cat}, 'sfx', file, () => {}),
+	emoji: (id: string) => fetch(`/api/projects/${id}/emoji`, send('POST', {})).then(j<{count: number}>),
 	syncBeats: (id: string, beatId?: string) => fetch(`/api/projects/${id}/sync`, send('POST', {beatId})).then(j),
 	command: (id: string, text: string, history: ChatMsg[], time: number) => fetch(`/api/projects/${id}/command`, send('POST', {text, history, time})).then(j<{reply: string; seek: number | null; job: Job | null}>),
 };

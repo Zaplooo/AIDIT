@@ -111,7 +111,7 @@ export const Edit: React.FC<EditProps> = ({project, mediaBase, quality, scale = 
 				{!beat && card && lk.layout !== 'split' ? <LegacyCard card={card} t={t} W={W} H={H} theme={theme} /> : null}
 				{/* titulky – schované, když obrazovku zakrývá grafika */}
 				{project.captions.enabled && !(beat?.kind === 'gfx' && !overlay && (beat.layout ?? 'full') === 'full') && !pip && beat?.gfx?.type !== 'pill' ? (
-					<Captions groups={L.groups} style={project.captions} accent={lk.accent} W={W} H={H} t={t} y={split ? 0.8 : project.captions.y} />
+					<Captions groups={L.groups} style={project.captions} accent={lk.accent} W={W} H={H} t={t} y={split ? 0.8 : project.captions.y} emojis={project.plan?.emojis} />
 				) : null}
 				{chip?.chip && !covers ? (
 					<Pos pos={chip.pos} W={W} H={H}>
@@ -267,7 +267,7 @@ const smooth = (x: number) => {
 	return k * k * (3 - 2 * k);
 };
 
-export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: string; W: number; H: number; t: number; y: number}> = ({groups, style, accent, W, H, t, y}) => {
+export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: string; W: number; H: number; t: number; y: number; emojis?: Record<number, string>}> = ({groups, style, accent, W, H, t, y, emojis}) => {
 	const {fps} = useVideoConfig();
 	const g = groups.find((x) => t >= x.start && t < x.end);
 	if (!g) return null;
@@ -277,9 +277,12 @@ export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: s
 	// „blur“: nástup s rozostřením + pružinou a odchod s rozostřením (jako v referencích)
 	const blurIn = style.animation === 'blur';
 	const outK = blurIn && g.end - t < 0.12 ? (g.end - t) / 0.12 : 1;
-	const pin = style.animation === 'none' ? 1 : style.animation === 'pop' || blurIn ? Math.min(pop, outK) : smooth(lt / 0.2);
+	// slovo po slovu (karaoke / psací stroj / bounce): celý řádek stojí, animují se jednotlivá slova
+	const perWord = style.animation === 'karaoke' || style.animation === 'typewriter' || style.animation === 'bounce';
+	const pin = style.animation === 'none' || perWord ? 1 : style.animation === 'pop' || blurIn ? Math.min(pop, outK) : smooth(lt / 0.2);
 	const scale = style.animation === 'pop' ? interpolate(pop, [0, 1], [0.8, 1]) : blurIn ? interpolate(pop, [0, 1], [0.9, 1]) : 1;
 	const lift = style.animation === 'fade-up' ? (1 - pin) * size * 0.14 : 0;
+	const slideX = style.animation === 'slide' ? (1 - pin) * -size * 0.9 : 0;
 	const blur = blurIn ? (1 - Math.min(1, pin)) * size * 0.07 : 0;
 	const shadow = style.shadow ? `0 0 ${0.3 * size}px rgba(0,0,0,0.75), 0 ${0.04 * size}px ${0.12 * size}px rgba(0,0,0,0.6)` : 'none';
 	const hl = style.highlight || accent;
@@ -290,7 +293,7 @@ export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: s
 				left: W * 0.07,
 				width: W * 0.86,
 				top: H * y,
-				translate: `0 calc(-50% + ${lift}px)`,
+				translate: `${slideX.toFixed(1)}px calc(-50% + ${lift}px)`,
 				scale: String(scale),
 				opacity: style.animation === 'none' ? 1 : Math.min(1, pin * 1.6),
 				filter: `blur(${blur.toFixed(2)}px)`,
@@ -306,13 +309,33 @@ export const Captions: React.FC<{groups: Group[]; style: CaptionStyle; accent: s
 			<span style={style.box ? {background: style.box, padding: '0.06em 0.28em', borderRadius: size * 0.18, boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone'} : undefined}>
 				{g.words.map((w, i) => (
 					<React.Fragment key={w.wi}>
-						<CapWord w={w} next={g.words[i + 1]} style={style} size={size} hl={hl} t={t} index={i} />
-						{i < g.words.length - 1 ? ' ' : ''}
-					</React.Fragment>
+							<WordAnim w={w} style={style} t={t} fps={fps}>
+								<CapWord w={w} next={g.words[i + 1]} style={style} size={size} hl={hl} t={t} index={i} />
+								{style.emoji && emojis?.[w.wi] ? <Emoji e={emojis[w.wi]} t={t - w.start} fps={fps} size={size} /> : null}
+							</WordAnim>
+							{i < g.words.length - 1 ? ' ' : ''}
+						</React.Fragment>
 				))}
 			</span>
 		</div>
 	);
+};
+
+// animace jednoho slova: karaoke (nevyslovená ztlumená), psací stroj (slova přibývají), bounce (vyslovené slovo vyskočí)
+const WordAnim: React.FC<{w: TlWord; style: CaptionStyle; t: number; fps: number; children: React.ReactNode}> = ({w, style, t, fps, children}) => {
+	const a = style.animation;
+	if (a !== 'karaoke' && a !== 'typewriter' && a !== 'bounce') return <>{children}</>;
+	const said = smooth((t - w.start + 0.03) / 0.1);
+	if (a === 'typewriter') return <span style={{opacity: t >= w.start - 0.02 ? 1 : 0}}>{children}</span>;
+	if (a === 'karaoke') return <span style={{opacity: 0.38 + 0.62 * said}}>{children}</span>;
+	const k = spring({frame: Math.max(0, (t - w.start + 0.03) * fps), fps, config: {damping: 9, stiffness: 260, mass: 0.6}});
+	return <span style={{display: 'inline-block', opacity: t >= w.start - 0.03 ? 1 : 0, scale: String(interpolate(k, [0, 1], [0.55, 1])), translate: `0 ${((1 - k) * 18).toFixed(1)}px`}}>{children}</span>;
+};
+
+// emoji za klíčovým slovem (vyskočí s pružinou)
+const Emoji: React.FC<{e: string; t: number; fps: number; size: number}> = ({e, t, fps, size}) => {
+	const k = spring({frame: Math.max(0, t * fps), fps, config: {damping: 10, stiffness: 200, mass: 0.6}});
+	return <span style={{display: 'inline-block', marginLeft: size * 0.12, fontSize: size * 0.95, scale: String(0.3 + 0.7 * k), rotate: `${((1 - k) * -25).toFixed(1)}deg`, WebkitTextStroke: '0px', fontFamily: '"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif'}}>{e}</span>;
 };
 
 const CapWord: React.FC<{w: TlWord; next?: TlWord; style: CaptionStyle; size: number; hl: string; t: number; index: number}> = ({w, next, style, size, hl, t, index}) => {

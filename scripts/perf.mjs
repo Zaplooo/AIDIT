@@ -10,7 +10,7 @@ await page.waitForFunction(() => !document.querySelector('.stage-busy'), {timeou
 await new Promise((r) => setTimeout(r, 2500));
 // skok na úsek a přehrání; měří se snímky vykreslené stránkou (requestAnimationFrame) a zpoždění přehrávače
 const r = await page.evaluate(async (from, len) => {
-	const bar = document.querySelector('.mini-tl');
+	const bar = document.querySelector('.mini-tl') || document.querySelector('.tl-ruler');
 	const total = parseFloat(document.querySelector('.tc').textContent.split('/')[1].split(':').reduce((a, b) => a * 60 + +b, 0));
 	const rect = bar.getBoundingClientRect();
 	bar.dispatchEvent(new MouseEvent('mousedown', {clientX: rect.left + (rect.width * from) / total, clientY: rect.top + 6, bubbles: true}));

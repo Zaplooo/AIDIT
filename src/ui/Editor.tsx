@@ -56,7 +56,8 @@ export const Editor: React.FC<{id: string}> = ({id}) => {
 	const phRef = React.useRef<HTMLDivElement>(null);
 	const tcRef = React.useRef<HTMLSpanElement>(null);
 	const latestRef = React.useRef<Project | null>(null);
-	const [tlOpen, setTlOpen] = React.useState(false);
+	const [tlOpen, setTlOpen] = React.useState(true); // timeline je hlavní místo úprav – otevřená od začátku
+	const [showText, setShowText] = React.useState(false); // přepis a seznam vět jen na vyžádání
 	const tlPlayhead = React.useRef<((t: number) => void) | null>(null);
 	const [cmdMsgs, setCmdMsgs] = React.useState<ChatMsg[]>([]);
 	const [cmdBusy, setCmdBusy] = React.useState(false);
@@ -252,7 +253,7 @@ export const Editor: React.FC<{id: string}> = ({id}) => {
 	};
 
 	return (
-		<div className={'editor' + (tlOpen ? ' tl-open' : '')}>
+		<div className={'editor' + (tlOpen ? ' tl-open' : '') + (showText ? '' : ' no-left')}>
 			<header className="topbar">
 				<button className="ghost icon" onClick={() => (location.hash = meta.clientId ? `#c/${meta.clientId}` : '')} title={meta.clientId ? 'Klient' : 'Domů'}>
 					<Icon name="back" />
@@ -264,6 +265,9 @@ export const Editor: React.FC<{id: string}> = ({id}) => {
 					</span>
 				</div>
 				<div style={{flex: 1}} />
+				<button className={'ghost' + (showText ? ' active' : '')} onClick={() => setShowText(!showText)} title="Přepis videa: které věty jsou ve videu a které vystřižené">
+					<Icon name="text" /> Přepis
+				</button>
 				<button className="ghost icon" onClick={h.undo} disabled={!h.canUndo || Boolean(busy)} title="Zpět (Ctrl+Z)">
 					<Icon name="undo" />
 				</button>
@@ -300,7 +304,7 @@ export const Editor: React.FC<{id: string}> = ({id}) => {
 				</button>
 			</header>
 
-			<AiPanel ctx={ctx} L={L} />
+			{showText ? <AiPanel ctx={ctx} L={L} /> : null}
 
 			<section className="stage">
 				<div className="player-wrap" style={{aspectRatio: `${F.w} / ${F.h}`}}>

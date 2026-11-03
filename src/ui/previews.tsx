@@ -76,7 +76,7 @@ export const GfxCard: React.FC<{type: string; setup: Setup; on?: boolean; onClic
 	const c = CATALOG.gfx.find((g) => g.type === type)!;
 	return (
 		<button className={'pv-card' + (on ? ' on' : '') + (compact ? ' compact' : '')} onClick={onClick}>
-			<HoverDemo props={{mode: 'gfx', g: c.sample, theme: themeFromSetup(setup)}} poster={<Poster src={`/tpl/${type}.jpg`} />} still={c.overlay ? undefined : 75} />
+			<HoverDemo props={{mode: 'gfx', g: c.sample, theme: themeFromSetup(setup)}} poster={<Poster src={`/tpl/${type}.jpg`} />} />
 			<Tick on={on} />
 			<b>{c.label}</b>
 			{!compact ? <span className="muted small">{c.desc}</span> : null}
@@ -100,7 +100,7 @@ export const HookCard: React.FC<{id: HookVisual; setup: Setup; on?: boolean; onC
 	const c = CATALOG.hooks.find((h) => h.id === id)!;
 	return (
 		<button className={'pv-card' + (on ? ' on' : '') + (compact ? ' compact' : '')} onClick={onClick}>
-			<HoverDemo props={{mode: 'hook', hook: {visual: id, text: setup.hook.text}, theme: themeFromSetup(setup)}} poster={<Poster src={id === 'broll' ? '/demo/broll.jpg' : undefined} />} still={['title', 'box', 'split', 'full'].includes(id) ? 40 : undefined} />
+			<HoverDemo props={{mode: 'hook', hook: {visual: id, text: setup.hook.text}, theme: themeFromSetup(setup)}} poster={<Poster src={id === 'broll' ? '/demo/broll.jpg' : undefined} />} />
 			<Tick on={on} />
 			<b>{c.label}</b>
 			{!compact ? <span className="muted small">{c.desc}</span> : null}

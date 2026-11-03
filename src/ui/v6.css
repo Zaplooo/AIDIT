@@ -818,3 +818,112 @@
 	object-fit: contain;
 	filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.55));
 }
+
+/* v8: přehlednější editor – přepis jen na vyžádání, timeline vždy dole */
+.editor.no-left {
+	grid-template-columns: minmax(0, 1fr) 380px;
+}
+.editor.tl-open {
+	grid-template-rows: 56px minmax(0, 1fr) 300px;
+}
+.tab-sep {
+	height: 1px;
+	background: var(--line);
+	margin: 18px 0;
+}
+.side .tabs button span {
+	white-space: nowrap;
+}
+
+/* v8: jednoduchá hlavní stránka s horním menu */
+.home-v8 {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background: radial-gradient(ellipse at 50% -20%, #22183f 0%, var(--bg) 55%);
+}
+.topnav {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	padding: 14px 32px;
+	border-bottom: 1px solid var(--line);
+	background: rgba(11, 12, 15, 0.7);
+	backdrop-filter: blur(10px);
+	flex: none;
+}
+.topnav a {
+	color: var(--muted);
+	text-decoration: none;
+	font-size: 14px;
+}
+.topnav a.on,
+.topnav a:hover {
+	color: var(--text);
+}
+.topnav .brand {
+	color: var(--text);
+	font-size: 18px;
+	margin-right: 10px;
+}
+.home-v8 .home-main {
+	max-width: 1180px;
+	width: 100%;
+	margin: 0 auto;
+	background: none;
+	overflow-y: auto;
+	flex: 1;
+	padding: 34px 32px 60px;
+}
+.hero-v8 h1 {
+	margin: 0 0 6px;
+	font-size: 34px;
+	letter-spacing: -0.03em;
+}
+.recent-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 12px;
+}
+.video-card {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	cursor: pointer;
+}
+.vc-thumb {
+	aspect-ratio: 9 / 13;
+	border-radius: 14px;
+	overflow: hidden;
+	background: var(--panel);
+	border: 1px solid var(--line);
+	display: grid;
+	place-items: center;
+	margin-bottom: 6px;
+}
+.vc-thumb video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.video-card:hover .vc-thumb {
+	border-color: var(--accent);
+}
+.video-card b {
+	font-size: 13px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.library-page {
+	flex: 1;
+	min-height: 0;
+	display: grid;
+	grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+.library-page .lib {
+	border: none;
+}
+.library-page .lib-grid {
+	grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}

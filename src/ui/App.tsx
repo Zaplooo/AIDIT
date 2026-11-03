@@ -1,5 +1,5 @@
 import React from 'react';
-import {Home} from './Home';
+import {Home, LibraryPage} from './Home';
 import {Editor} from './Editor';
 import {ClientPage, ClientStyle} from './ClientPage';
 import {NewVideo} from './NewVideo';
@@ -46,5 +46,6 @@ export const App: React.FC = () => {
 	else if ((m = hash.match(/^#c\/([\w-]+)\/styl/))) view = <ClientStyle key={m[1]} id={m[1]} />;
 	else if ((m = hash.match(/^#c\/([\w-]+)/))) view = <ClientPage key={m[1]} id={m[1]} />;
 	else if ((m = hash.match(/^#new\/([\w-]+)/))) view = <NewVideo key={m[1]} clientId={m[1] === '_' ? null : m[1]} />;
+	else if (hash.startsWith('#knihovna')) view = <LibraryPage />;
 	return <Boundary key={hash}>{view}</Boundary>;
 };

@@ -6,9 +6,8 @@ Dvojklik na **`Spustit AIDIT.cmd`** ve složce aplikace
 Okno terminálu nech otevřené – zavřením se aplikace vypne.
 
 ## Hlavní stránka
-- **Vlevo knihovna:** všechny motion grafiky, fonty, hudba a zvukové efekty. Najeď myší na grafiku = přehraje se, ▶ = poslech.
-- **Uprostřed:** **Nové video**, **Nový klient**, seznam klientů a videa bez klienta.
-- **Vpravo ukázky:** jak vypadají hooky a zoomy (na tvém záběru) a tipy.
+- Nahoře menu: **Domů**, **Knihovna a můj styl** (grafika, fonty, hudba, efekty, hooky, zoomy, co máš rád / nerad), **Nové video**.
+- Uprostřed: **Sestříhat podle odkazu**, **Co chceš stříhat?** (typ videa), **Poslední videa**, naučené styly a klienti.
 
 ## Klienti (přednastavený styl)
 1. **Nový klient** → jméno → nastavíš mu styl krok za krokem (barva, písmo a titulky, motion grafika, zoomy, hook, hudba, tempo).
@@ -36,7 +35,7 @@ O videu (chat) → Barva → Písmo a titulky → Motion grafika → Zoomy → H
 Na hlavní stránce vlož odkaz na video, které se ti líbí → AI ho rozebere (střihy, tempo, titulky, grafika, zvuk) a ukáže, jak by tvoje video mohlo vypadat. Nahraješ video, AI se doptá a všechno jde upravit.
 
 ## Editor
-- Vlevo věty (✓ ve videu / ✗ vystřižené), uprostřed náhled, vpravo záložky Styl / Titulky / Grafika / Zvuk / Délka.
+- Uprostřed náhled, pod ním vždy **timeline**, vpravo 4 záložky: **Titulky / Grafika / Zvuk / Styl a délka**. Tlačítko **Přepis** nahoře ukáže věty (✓ ve videu / ✗ vystřižené).
 - **Timeline** (tlačítko pod náhledem): stopy Video, Grafika (i Hook), B-roll, Štítky a zoom, **Zvuky**, Titulky, Hudba – na všechno se dá kliknout a upravit.
   - grafiku / B-roll / štítek **táhni** = posun v čase, **táhni okraj** = délka,
   - klik = vpravo úpravy: šablona (při změně ji AI přizpůsobí tomu, co tam říkáš), texty, **font**, **pozice** (9 míst + výš / níž / do boku + velikost), **zvuk** jen pro tuhle grafiku,
@@ -46,7 +45,7 @@ Na hlavní stránce vlož odkaz na video, které se ti líbí → AI ho rozebere
   - **Načasovat podle řeči:** položky seznamu / karet naskočí přesně ve chvíli, kdy je řekneš,
   - **B-roll:** vyber jiný z nalezených záběrů nebo vyhledej vlastní, „+ B-roll“ přidá záběr na místo přehrávání,
   - **klipy:** táhni = přehodit pořadí, okraje = ořez, „Rozdělit v místě přehrávání“, „Vystřihnout klip“ (ruční střih zamkne automatické přestříhání – jde odemknout).
-- **Titulky:** 18 stylů (dva fonty, aktivní slovo kurzívou / v boxu, obrys, komiks, podklad, Apple, neon, ručně psané…) a pod nimi editor do detailu: font, velikost, řádky, výška, barva, obrys, podklad, **druhý font** (každé 2. / 3. / klíčové slovo) a **aktivní slovo** (font, barva, zvětšení, box, záře). Nebo napiš AI: „každé druhé slovo kurzívou a aktivní slovo žluté v boxu“.
+- **Titulky:** animace jako Submagic – **slovo po slově, karaoke, bounce (Hormozi)**, pružina, zleva…; **emoji u klíčových slov** (vybere AI); **Stáhnout titulky (SRT)** pro YouTube / Premiere. Celkem 22 stylů (dva fonty, aktivní slovo kurzívou / v boxu, obrys, komiks, podklad, Apple, neon, ručně psané…) a pod nimi editor do detailu: font, velikost, řádky, výška, barva, obrys, podklad, **druhý font** (každé 2. / 3. / klíčové slovo) a **aktivní slovo** (font, barva, zvětšení, box, záře). Nebo napiš AI: „každé druhé slovo kurzívou a aktivní slovo žluté v boxu“.
 - **Zvuk:** 300+ efektů v 18 kategoriích – poslechni a zaškrtni, které chceš; co se nelíbí, odškrtni.
 - **Grafika:** 30 šablon. Najeď = ukázka v barvách videa, klik = přidá se na aktuální místo a AI ji vyplní tím, co tam říkáš.
 - **AI lišta pod náhledem:** „titulky menší“, „přidej seznam na 0:12“, „už je to sestříhané, nech střih“, „prohoď klipy 1 a 2“, „klidnější hudba“…

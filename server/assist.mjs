@@ -197,3 +197,28 @@ Navrhni 5 různých hooků = text na obrazovku do prvních 2 sekund (max 7 slov,
 	const r = await askClaude(config, prompt, 'Jsi expert na hooky krátkých videí (Reels/TikTok). Česky, úderně, bez klišé a bez emoji.', {schema, timeoutMs: 120000});
 	return {hooks: r.hooks.slice(0, 5)};
 }
+
+// emoji k titulkům (jako Submagic): jen u klíčových slov, kde emoji opravdu sedí, nanejvýš jedno za ~4 s
+export async function pickEmojis(words, config) {
+	const text = words.map((w) => `[${w.wi}|${w.start.toFixed(1)}]${w.text}`).join(' ').slice(0, 12000);
+	const schema = {type: 'object', properties: {items: {type: 'array', items: {type: 'object', properties: {wi: {type: 'integer'}, emoji: {type: 'string'}}, required: ['wi', 'emoji']}}}, required: ['items']};
+	const sys = 'Vybíráš emoji do titulků krátkých videí (styl Submagic). Jen u klíčových slov (věci, emoce, čísla, akce), kde emoji jasně sedí; nanejvýš jedno emoji za ~4 sekundy, žádné u spojek a zájmen. Vždy jen jeden znak emoji.';
+	let r;
+	try {
+		r = await askClaude(config, `Text videa [index|čas]slovo:\n${text}`, sys, {schema, timeoutMs: 90000, model: 'haiku'});
+	} catch {
+		r = await askClaude(config, `Text videa [index|čas]slovo:\n${text}`, sys, {schema, timeoutMs: 150000});
+	}
+	const valid = new Set(words.map((w) => w.wi));
+	const out = {};
+	let last = -10;
+	for (const it of (r.items ?? []).sort((a, b) => a.wi - b.wi)) {
+		const w = words.find((x) => x.wi === it.wi);
+		if (!valid.has(it.wi) || !w || w.start - last < 3) continue;
+		const e = [...String(it.emoji).trim()].slice(0, 2).join('');
+		if (!e) continue;
+		out[it.wi] = e;
+		last = w.start;
+	}
+	return out;
+}

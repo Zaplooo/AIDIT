@@ -220,6 +220,100 @@
  ],
  "captions": [
   {
+   "id": "wordbyword",
+   "label": "Slovo po slově",
+   "desc": "slova naskakují přesně, jak je říkáš",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Montserrat",
+    "size": 70,
+    "textCase": "upper",
+    "maxWords": 3,
+    "animation": "typewriter",
+    "stroke": 8,
+    "strokeColor": "#000000",
+    "active": {
+     "color": "$color",
+     "scale": 1.08
+    }
+   }
+  },
+  {
+   "id": "karaoke2",
+   "label": "Karaoke",
+   "desc": "celý řádek, vyslovená slova se rozsvěcují",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": true,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Poppins",
+    "size": 60,
+    "textCase": "normal",
+    "maxWords": 4,
+    "animation": "karaoke",
+    "active": {
+     "color": "$color"
+    }
+   }
+  },
+  {
+   "id": "bounce",
+   "label": "Bounce (Hormozi)",
+   "desc": "VELKÁ PÍSMENA, každé slovo vyskočí, aktivní žluté",
+   "hl": "#FFD84D",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Anton",
+    "size": 96,
+    "textCase": "upper",
+    "maxWords": 2,
+    "animation": "bounce",
+    "stroke": 10,
+    "strokeColor": "#000000",
+    "active": {
+     "color": "#FFD84D",
+     "scale": 1.12
+    }
+   }
+  },
+  {
+   "id": "emoji",
+   "label": "S emoji (Submagic)",
+   "desc": "tučné titulky a emoji u klíčových slov",
+   "hl": "color",
+   "style": {
+    "weight": 800,
+    "y": 0.68,
+    "shadow": false,
+    "color": "#FFFFFF",
+    "mode": "custom",
+    "font": "Montserrat",
+    "size": 68,
+    "textCase": "upper",
+    "maxWords": 3,
+    "animation": "pop",
+    "stroke": 8,
+    "strokeColor": "#000000",
+    "emoji": true,
+    "active": {
+     "color": "$color",
+     "scale": 1.1
+    }
+   }
+  },
+  {
    "id": "goat",
    "label": "Goat modrá",
    "desc": "malá písmena, aktivní slovo v tvé barvě",

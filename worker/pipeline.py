@@ -692,7 +692,7 @@ def base(proj: Path, quality="preview"):
     filt, labels = [], []
     for k, (c, inF, durF) in enumerate(clips):
         a, b = inF / fps, (inF + durF) / fps
-        filt.append(f"[0:a]atrim=start={a:.5f}:end={b:.5f},asetpts=PTS-STARTPTS,afade=t=in:d=0.008,afade=t=out:st={max(b - a - 0.008, 0):.5f}:d=0.008[a{k}]")
+        filt.append(f"[0:a]atrim=start={a:.5f}:end={b:.5f},asetpts=PTS-STARTPTS,afade=t=in:d=0.012,afade=t=out:st={max(b - a - 0.012, 0):.5f}:d=0.012[a{k}]")
         labels.append(f"[a{k}]")
     filt.append("".join(labels) + f"concat=n={len(clips)}:v=0:a=1[aout]")
     (tmp / "audio.txt").write_text(";\n".join(filt), encoding="utf-8")

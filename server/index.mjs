@@ -13,7 +13,7 @@ import {pickBroll, searchMixkit} from './broll.mjs';
 import {studyReference} from './refai.mjs';
 import {styleFromProfiles} from './styles.mjs';
 import {applySetup, CATALOG, withDefaults} from './setup.mjs';
-import {assist, command, fillGfx, suggestHooks} from './assist.mjs';
+import {assist, command, fillGfx, pickEmojis, suggestHooks} from './assist.mjs';
 import {attachHeads, dedupeSelection, reviewCut} from './cutcheck.mjs';
 import {learnFromEdit, prefsText, readPrefs, remember, writePrefs} from './prefs.mjs';
 import {styleToSetup} from './setup.mjs';
@@ -221,6 +221,13 @@ async function makePlan(id, job) {
 	const plan = await planVideo2({words, units: p.units, style: st, duration, platform, brief: ans.brief ?? '', setup, script: ans.script ?? '', prefs: prefsText()}, CONFIG);
 	await setMeta(id, {planBrief: ans.brief ?? '', planSetup: JSON.stringify(ans.setup ?? null)});
 	syncBeats(plan.beats, words); // položky grafiky naskočí, když je mluvčí vysloví
+	if (p.captions?.emoji) {
+		try {
+			plan.emojis = await pickEmojis(words, CONFIG);
+		} catch {
+			/* bez emoji */
+		}
+	}
 	if (job) {
 		say(job, `AI: ${plan.summary}`);
 		for (const t of plan.thinking) job.log.push({t: Date.now(), line: `• ${t}`});
@@ -889,6 +896,20 @@ export async function createApp({dev = true} = {}) {
 			lib.push(item);
 			await writeJson(lf, lib);
 			res.json(item);
+		} catch (e) {
+			res.status(500).json({error: e.message});
+		}
+	});
+
+	// emoji k titulkům (AI) – uloží se do plan.emojis a zapne se zobrazení
+	app.post('/api/projects/:id/emoji', async (req, res) => {
+		try {
+			const f = path.join(pdir(req.params.id), 'project.json');
+			const p = await readJson(f);
+			p.plan.emojis = await pickEmojis(outWords(p).words, CONFIG);
+			p.captions.emoji = true;
+			await writeJson(f, p);
+			res.json({count: Object.keys(p.plan.emojis).length});
 		} catch (e) {
 			res.status(500).json({error: e.message});
 		}

@@ -31,7 +31,8 @@ export type CaptionStyle = {
 	textCase: 'lower' | 'upper' | 'normal';
 	maxWords: number;
 	y: number;
-	animation: 'fade-up' | 'pop' | 'none' | 'blur';
+	animation: 'fade-up' | 'pop' | 'none' | 'blur' | 'karaoke' | 'typewriter' | 'bounce' | 'slide';
+	emoji?: boolean; // emoji u klíčových slov (vybírá AI -> plan.emojis)
 	shadow: boolean;
 	// vlastní kombinace (mode 'custom' – a funguje i v ostatních režimech)
 	italic?: boolean;
@@ -96,6 +97,7 @@ export type Plan = {
 	beats?: Beat[];
 	mood?: string;
 	questions: {id: string; question: string; options: {label: string; value: string; hint?: string}[]; answer?: string}[];
+	emojis?: Record<number, string>; // emoji k slovům (index slova -> emoji)
 	sounds?: {id: string; wi: number; shift?: number; file: string; vol?: number; name?: string}[]; // zvuky, které autor přidal sám
 	sfxEdit?: Record<string, {off?: boolean; file?: string; vol?: number; dt?: number}>; // úpravy automatických efektů z timeline
 };
