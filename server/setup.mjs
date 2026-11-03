@@ -93,7 +93,8 @@ export function styleToSetup(st) {
 		bg: st.theme?.bg ?? 'dark',
 		font: st.theme?.font ?? 'Inter Tight',
 		caption: capId,
-		captionCustom: Object.fromEntries(Object.entries({font: cap.font, size: cap.size, textCase: cap.textCase, maxWords: cap.maxWords, y: cap.y, animation: cap.animation, color: cap.color}).filter(([, v]) => v !== undefined && v !== null)),
+		// celé titulky vzoru (obrys, box, aktivní slovo, druhý font, animace…), ne jen font a velikost
+		captionCustom: Object.fromEntries(Object.entries(cap).filter(([k, v]) => !['enabled', 'weight'].includes(k) && v !== undefined && v !== null)),
 		gfx: (rec.preferredGfx ?? []).filter((t) => types.has(t)),
 		gfxAmount: bpm < 7 ? 'low' : bpm < 12 ? 'mid' : 'high',
 		zoom: look.zoom ? 'punch' : look.jump === 'punch' ? 'jump' : 'none',

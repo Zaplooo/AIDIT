@@ -12,7 +12,8 @@ PRAVIDLA
 - NIKDY nedávej text ani prvky PŘES mluvčího (přes obličej nebo tělo) a nic nevyskakuje z boku přes něj. Grafika je buď přes celou obrazovku ("full"),
   nebo v horní polovině nad mluvčím ("split"). Šablony versus/side/pill/lowerthird/counter/marquee NEPOUŽÍVEJ, pokud je autor výslovně nevybral.
 - Výčty (list, cards, chips, timeline, kinetic): položky piš přesně slovy, která mluvčí řekne, a grafiku začni na prvním z nich – aplikace pak každou položku ukáže ve chvíli, kdy ji vysloví. Grafika trvá, dokud mluvčí nedořekne poslední bod.
-- Když se žádná šablona nehodí, navrhni vlastní grafiku "custom": layout "hero" (jedno velké číslo/ikona + text), "stack" (2–5 řádků s ikonou/fajfkou/číslem), "row" (2–4 dlaždice vedle sebe), "grid" (2×2); parts = [{kind: text|number|icon|check|cross|badge, text, sub, icon}].
+- Když se žádná šablona nehodí, VYMYSLI vlastní grafiku "custom" (buď kreativní, každá může vypadat jinak): layout "hero" (jedno velké číslo/ikona + text), "stack" (2–5 řádků s ikonou/fajfkou/číslem), "row" (2–4 dlaždice vedle sebe), "grid" (2×2); parts = [{kind: text|number|icon|check|cross|badge, text, sub, icon}].
+  Navrhni i POHYB podle významu (motion): wipe = odhalení / tajemství, flip = změna / před a po, drop = pád / problém, pop = překvapení / výsledek, slide = srovnání / dvě strany, zoom = důraz, blur = klidná myšlenka, rise = výčet. V title můžeš jedno klíčové slovo dát do *hvězdiček* a zvolit emph (marker = fix zvýrazňovač, underline, glow).
 - Grafika (kind "gfx") ilustruje, co se právě říká. Šablony (vyber tu, která k větě sedí nejlépe, a STŘÍDEJ je):
   • "reveal" – Apple styl: věta se odhalí slovo po slovu s rozostřením, klíčové slovo svítí (pointa, hook, silná věta),
   • "headline" – nadpis s fixem na klíčovém slově (+ malý nadpis "sub"),
@@ -52,6 +53,8 @@ export const GFX = {
 		type: {type: 'string', enum: ['headline', 'reveal', 'stat', 'particles', 'list', 'quote', 'chat', 'compare', 'slam', 'timer', 'step', 'chapter', 'chips', 'cards', 'gauge', 'crowd', 'prompt', 'note', 'versus', 'side', 'pill', 'bars', 'timeline', 'bigicon', 'lowerthird', 'counter', 'question', 'marquee', 'progress', 'kinetic', 'custom']},
 		icon: {type: 'string'},
 		layout: {type: 'string', enum: ['stack', 'row', 'grid', 'hero']},
+		motion: {type: 'string', enum: ['rise', 'pop', 'slide', 'flip', 'blur', 'drop', 'zoom', 'wipe']},
+		emph: {type: 'string', enum: ['marker', 'underline', 'glow']},
 		note: {type: 'string'},
 		parts: {type: 'array', items: {type: 'object', properties: {kind: {type: 'string', enum: ['text', 'number', 'icon', 'check', 'cross', 'badge']}, text: {type: 'string'}, sub: {type: 'string'}, icon: {type: 'string'}}, required: ['kind']}},
 		bars: {type: 'array', items: {type: 'object', properties: {label: {type: 'string'}, value: {type: 'number'}}, required: ['label', 'value']}},
@@ -202,7 +205,9 @@ export function cleanGfx(g) {
 			return s(g.text) ? {type: 'marquee', text: s(g.text)} : null;
 		case 'custom': {
 			const items = (g.parts ?? []).map((x) => ({kind: x.kind ?? 'text', text: s(x.text) || undefined, sub: s(x.sub) || undefined, icon: s(x.icon) || undefined})).filter((x) => x.text || x.icon).slice(0, 6);
-			return items.length ? {type: 'custom', title: s(g.title) || undefined, layout: ['stack', 'row', 'grid', 'hero'].includes(g.layout) ? g.layout : 'stack', items, note: s(g.note) || undefined} : null;
+			const motion = ['rise', 'pop', 'slide', 'flip', 'blur', 'drop', 'zoom', 'wipe'].includes(g.motion) ? g.motion : undefined;
+			const emph = ['marker', 'underline', 'glow'].includes(g.emph) ? g.emph : undefined;
+			return items.length ? {type: 'custom', title: s(g.title) || undefined, layout: ['stack', 'row', 'grid', 'hero'].includes(g.layout) ? g.layout : 'stack', items, note: s(g.note) || undefined, motion, emph} : null;
 		}
 		default:
 			return null;
@@ -218,7 +223,7 @@ function setupRules(setup) {
 	const hook = setup.hook ?? {visual: 'none'};
 	const lines = [
 		setup.gfxAmount === 'none' ? '- ŽÁDNOU motion grafiku (kind "gfx") ani štítky – autor chce čistý střih jen s titulky.' : allowed ? `- Motion grafika: autor vybral TYTO šablony a smíš použít JEN je: ${allowed.join(', ')}. Střídej je a použij každou, kde se hodí.` : '- Motion grafiku vyber sám ze všech šablon.',
-		`- Hustota: zhruba ${per} beatů za minutu (grafika + B-roll + štítky + přiblížení dohromady).`,
+		`- Hustota: NANEJVÝŠ ${per} beatů za minutu (grafika + B-roll + štítky + přiblížení dohromady). Je to strop, ne cíl: když se k místu nic doopravdy nehodí, nedávej nic. Každá grafika musí divákovi něco přidat (číslo, výčet, kroky, srovnání, pointa) – grafika jen pro efekt je chyba.`,
 		setup.broll === 'off' ? '- B-roll NEPOUŽÍVEJ.' : setup.broll === 'lots' ? '- B-rollu dej hodně (každá konkrétní situace/věc).' : '- B-roll jen u nejsilnějších konkrétních situací.',
 		zoomOk ? '- Přiblížení (punch) dávej na důrazné věty a pointy.' : '- Přiblížení (kind "punch") NEPOUŽÍVEJ – autor nechce zoomy na důrazech.',
 		hook.visual === 'broll'
@@ -340,4 +345,47 @@ ${prefs ? `CO AUTOR (NE)MÁ RÁD:\n${prefs}\n` : ''}`;
 		beats.push({id: `m${k + 1}`, wi: -1, at, dur: Math.min(Math.max(Number(b.dur) || 2.4, 1.2), 4), kind: 'gfx', layout: 'overlay', gfx: g, why: 'popisek montáže'});
 	});
 	return {summary: r.summary, title: r.title, hook: '', thinking: [], mood: '', keywords: [], beats, cards: [], questions: []};
+}
+
+// ---------------------------------------------------------------- kritik grafiky: každý beat znovu posoudí proti tomu, co se říká
+// Grafika, B-roll nebo štítek, který k místu nesedí (nic nepřidá, opakuje titulky, je mimo téma), se vyhodí – lepší čistý záběr.
+const SYSTEM_CRITIC = `Jsi přísný šéfstřihač prémiových krátkých videí. Dostaneš plán střihu: u každého prvku (motion grafika, B-roll, štítek, přiblížení)
+vidíš, kdy přijde, co v tu chvíli mluvčí říká a co prvek ukazuje. Ohodnoť každý prvek 1–10:
+10 = divák díky němu líp pochopí / zapamatuje si pointu (číslo, výčet, kroky, srovnání, silná pointa), obsah přesně odpovídá řeči;
+5 = neškodí, ale nic nepřidává (jen opakuje titulky, obecná fráze);
+1 = nesedí (jiné téma, špatné číslo, ruší, přichází moc brzo po jiném prvku, působí lacině).
+Hodnoť i celek: když jdou prvky moc hustě za sebou, slabší z nich dej nízko. Rozhoduj podle typu videa a zadání. Důvod piš česky, 2–6 slov.`;
+const CRITIC_SCHEMA = {type: 'object', properties: {items: {type: 'array', items: {type: 'object', properties: {id: {type: 'string'}, score: {type: 'integer'}, reason: {type: 'string'}}, required: ['id', 'score', 'reason']}}}, required: ['items']};
+
+const describe = (b) => {
+	if (b.kind === 'broll') return `B-roll: ${b.broll?.query ?? ''}`;
+	if (b.kind === 'chip') return `štítek: ${b.chip}`;
+	if (b.kind === 'punch') return 'přiblížení na důraz';
+	const g = b.gfx ?? {};
+	// všechen text grafiky (words, items, steps, bars…), ať kritik vidí, co přesně ukazuje
+	const bits = [];
+	const walk = (v, k) => (typeof v === 'string' ? k !== 'type' && k !== 'icon' && bits.push(v) : typeof v === 'number' ? k !== 'times' && bits.push(String(v)) : v && typeof v === 'object' ? Object.entries(v).forEach(([kk, x]) => kk !== 'times' && walk(x, Array.isArray(v) ? k : kk)) : null);
+	walk(g, '');
+	return `grafika ${g.type}: ${bits.join(' | ').slice(0, 160)}`;
+};
+
+// beats + words (výstupní, s časy) -> {beats, dropped: [{beat, reason}]}
+export async function criticBeats(beats, words, config, {brief = '', type = '', min = 6} = {}) {
+	const judged = beats.filter((b) => b.kind !== 'punch');
+	if (judged.length < 2) return {beats, dropped: []};
+	const pos = new Map(words.map((w, i) => [w.wi, i]));
+	const lines = judged.map((b) => {
+		const i = pos.get(b.wi) ?? 0;
+		const t = words[i]?.start ?? 0;
+		return `${b.id} @${t.toFixed(1)}s (${b.dur.toFixed(1)} s) ${describe(b)}\n   mluvčí: „${words.slice(Math.max(0, i - 4), i + 14).map((w) => w.text).join(' ')}“`;
+	});
+	const prompt = `Typ videa: ${type || 'krátké video'}\nZadání: ${brief || '—'}\nDélka: ${(words[words.length - 1]?.start ?? 0).toFixed(0)} s\n\nPrvky plánu:\n${lines.join('\n')}`;
+	let r;
+	try {
+		r = await askClaude(config, prompt, SYSTEM_CRITIC, {schema: CRITIC_SCHEMA, timeoutMs: 150000});
+	} catch {
+		return {beats, dropped: []};
+	}
+	const bad = new Map((r.items ?? []).filter((x) => Number(x.score) < min).map((x) => [x.id, x.reason]));
+	return {beats: beats.filter((b) => !bad.has(b.id)), dropped: beats.filter((b) => bad.has(b.id)).map((b) => ({beat: b, reason: bad.get(b.id)}))};
 }

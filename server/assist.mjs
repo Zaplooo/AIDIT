@@ -18,7 +18,7 @@ Nálady hudby (music.mood): ${ids(CATALOG.moods).join(', ')}
 Hudební knihovna (music.mode "track", music.file): ${music.map((m) => `${m.file} „${m.name}“ (${m.cat})`).join('; ')}`;
 
 const FONT_LIST = CATALOG.fonts.map((f) => f.family);
-const CAPTION_PROPS = {
+export const CAPTION_PROPS = {
 	enabled: {type: 'boolean'},
 	font: {type: 'string', enum: FONT_LIST},
 	mode: {type: 'string', enum: ['goat', 'bold', 'word', 'mix', 'custom']},
@@ -28,7 +28,8 @@ const CAPTION_PROPS = {
 	textCase: {type: 'string', enum: ['lower', 'upper', 'normal']},
 	maxWords: {type: 'integer'},
 	y: {type: 'number'},
-	animation: {type: 'string', enum: ['fade-up', 'pop', 'none', 'blur']},
+	animation: {type: 'string', enum: ['typewriter', 'karaoke', 'bounce', 'rise', 'zoom', 'pop', 'fade-up', 'slide', 'blur', 'none']},
+	emoji: {type: 'boolean'},
 	shadow: {type: 'boolean'},
 	italic: {type: 'boolean'},
 	stroke: {type: 'number'},
@@ -177,7 +178,7 @@ export async function fillGfx({type, near, all, prev = null, idea = ''}, config)
 V tomhle místě videa mluvčí říká: „${near}“${prev ? `
 Dosud tu byla jiná grafika s tímhle obsahem (zachovej sdělení, jen ho převeď do nové šablony): ${JSON.stringify(prev)}` : ''}
 (Celé video pro kontext: ${all})
-${type === 'custom' ? `Navrhni VLASTNÍ grafiku na míru tomuhle místu (layout hero = jedno velké číslo/ikona + text, stack = 2–5 řádků, row = 2–4 dlaždice, grid = 2×2; parts = [{kind: text|number|icon|check|cross|badge, text, sub, icon}], volitelně title a note).${idea ? ` Autor chce: ${idea}.` : ''} Musí vypadat čistě a profesionálně, málo textu.\n` : ''}Vyplň šablonu obsahem přesně k tomu, co se v tomhle místě říká. U výčtů piš položky slovy, která mluvčí opravdu řekne (aplikace podle nich načasuje, kdy která naskočí). Česky, krátce (max 6 slov na řádek), čísla přesně podle řeči. Ikony: clock, moon, sun, bed, phone, screen, food, bolt, brain, heart, check, x, star, user, users, chat, play, money, chart, calendar, coffee, fire, target, book, bulb, rocket, eye, lock, music, wind, stress, water, run, pen, code, folder, gift.`;
+${type === 'custom' ? `Navrhni VLASTNÍ grafiku na míru tomuhle místu (layout hero = jedno velké číslo/ikona + text, stack = 2–5 řádků, row = 2–4 dlaždice, grid = 2×2; parts = [{kind: text|number|icon|check|cross|badge, text, sub, icon}], volitelně title a note). Vymysli i pohyb podle významu (motion: wipe odhalení, flip změna, drop pád, pop překvapení, slide srovnání, zoom důraz, blur klid, rise výčet) a jedno klíčové slovo v title dej do *hvězdiček* se zdůrazněním emph (marker / underline / glow).${idea ? ` Autor chce: ${idea}.` : ''} Musí vypadat čistě a profesionálně, málo textu.\n` : ''}Vyplň šablonu obsahem přesně k tomu, co se v tomhle místě říká. U výčtů piš položky slovy, která mluvčí opravdu řekne (aplikace podle nich načasuje, kdy která naskočí). Česky, krátce (max 6 slov na řádek), čísla přesně podle řeči. Ikony: clock, moon, sun, bed, phone, screen, food, bolt, brain, heart, check, x, star, user, users, chat, play, money, chart, calendar, coffee, fire, target, book, bulb, rocket, eye, lock, music, wind, stress, water, run, pen, code, folder, gift.`;
 	const sys = 'Vyplňuješ šablonu motion grafiky textem z videa. Jen JSON podle schématu.';
 	let r;
 	try {

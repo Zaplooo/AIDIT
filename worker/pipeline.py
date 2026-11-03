@@ -478,11 +478,20 @@ def cut(proj: Path):
         if 0 < k < 30:
             c["out"] = round(min(b_ / 100 + 0.05, dur), 3)
     clips.sort(key=lambda c: c["in"])
-    # sousední povolené klipy spojit, když by střih vyhodil jen < 0,15 s – takový skok v obraze vypadá jako zaseknutí, ne jako střih
+    # sousední povolené klipy spojit, když by střih vyhodil jen kousek ticha – mikro-střih (0,15–0,3 s) uprostřed plynulé řeči
+    # vypadá jako zaseknutí (hlava poskočí), ne jako střih. U krátkého útržku (< 0,9 s) se spojí i delší pauza.
+    # Nespojí se, když v mezeře je slyšet řeč (vystřižená vata / přeřeknutí) – ten střih je záměrný. Rozhoduje zvuk,
+    # ne časy z přepisu (Whisper slova často „natáhne“ přes pauzu).
+    def word_in(a, b):
+        fr = [speech[i] for i in range(max(0, int(a * 100)), min(n_env, int(b * 100)))]
+        return sum(1 for x in fr if x) >= 8
+
     merged = []
     for c in clips:
         p = merged[-1] if merged else None
-        if p and p["enabled"] and c["enabled"] and c["in"] - p["out"] <= 0.15 and seg_of(p["in"]) == seg_of(c["in"]):
+        gap = c["in"] - p["out"] if p else 9
+        limit = 0.5 if p and min(p["out"] - p["in"], c["out"] - c["in"]) < 0.9 else 0.3
+        if p and p["enabled"] and c["enabled"] and seg_of(p["in"]) == seg_of(c["in"]) and (gap <= 0.15 or (gap <= limit and not word_in(p["out"], c["in"]))):
             p["out"] = c["out"]; p["words"] += c["words"]
         else:
             merged.append(c)
@@ -516,6 +525,42 @@ def cut(proj: Path):
                     a["enabled"] = False
                     a["reason"] = "zakoktání (opakuje se hned v dalším klipu)"
             break
+    # pojistka proti zdvojení: stejná pasáž ve dvou klipech (dva pokusy téže věty prošly výběrem) -> nechá se pozdější verze.
+    # Celý klip skoro stejný -> pryč; jen jeho konec se opakuje v pozdějším klipu -> konec se zkrátí.
+    def grams(ts, n=4):
+        return {tuple(ts[i:i + n]) for i in range(len(ts) - n + 1)}
+
+    on = [c for c in merged if c["enabled"]]
+    for i, a in enumerate(on):
+        ha = [w for w in heard(a) if w["n"] not in FILLERS]
+        ta = [w["n"] for w in ha]
+        if len(ta) < 4:
+            continue
+        ga = grams(ta)
+        for b in on[i + 1:]:
+            if not b["enabled"] or b is a:
+                continue
+            tb = [w["n"] for w in heard(b) if w["n"] not in FILLERS]
+            if len(tb) < 4:
+                continue
+            gb = grams(tb)
+            shared = ga & gb
+            if not shared:
+                continue
+            if len(shared) / max(1, min(len(ga), len(gb))) >= 0.5:
+                a["enabled"] = False
+                a["reason"] = "stejná pasáž je ve videu dvakrát (nechal jsem pozdější)"
+                break
+            # opakovaný konec klipu A (od prvního sdíleného slova až do konce)
+            k = next((k for k in range(len(ta) - 3) if tuple(ta[k:k + 4]) in gb), None)
+            if k is not None and len(shared) >= 2 and all(tuple(ta[x:x + 4]) in gb for x in range(k, len(ta) - 3)):
+                first = ha[k]
+                a["out"] = round(max(a["in"] + 0.1, first["start"] - 0.03), 3)
+                a["words"] = [x for x in a["words"] if words[x]["start"] < first["start"] - 0.01]
+                if a["out"] - a["in"] < 0.6 or not heard(a):
+                    a["enabled"] = False
+                    a["reason"] = "stejná pasáž je ve videu dvakrát (nechal jsem pozdější)"
+                break
     # klip, ve kterém nezazní žádné slovo (útržek ticha / nádechu), do videa nepatří
     for c in merged:
         if c["enabled"] and not heard(c) and len(merged) > 1:

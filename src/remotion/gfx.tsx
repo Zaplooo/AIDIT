@@ -2,7 +2,7 @@
 // čipy se září, kapitoly na modré mřížce, karty s ikonami, srovnání přes mluvčího, budíky, ručně psaný text…).
 // Pravidla: animace jen přes frame/interpolate/spring, statické fonty, grafika NIKDY úplně nestojí (jemný drift + živé pozadí).
 import React from 'react';
-import {AbsoluteFill, Easing, interpolate, spring, staticFile} from 'remotion';
+import {AbsoluteFill, Easing, interpolate, interpolateColors, spring, staticFile} from 'remotion';
 import {Ico} from './icons';
 import {FONTS} from './fonts';
 
@@ -38,8 +38,11 @@ export type Gfx = (
 	| {type: 'marquee'; text: string}
 	| {type: 'progress'; label: string; level: number; text?: string}
 	| {type: 'kinetic'; words: string[]}
-	| {type: 'custom'; title?: string; layout: 'stack' | 'row' | 'grid' | 'hero'; items: CustomItem[]; note?: string}
+	| {type: 'custom'; title?: string; layout: 'stack' | 'row' | 'grid' | 'hero'; items: CustomItem[]; note?: string; motion?: Motion; emph?: 'marker' | 'underline' | 'glow'}
 ) & {times?: number[]}; // times = kdy která položka naskočí (s od začátku grafiky) – podle toho, kdy ji mluvčí vysloví
+// pohyb, který si AI vymyslí pro vlastní grafiku (podle významu: „wipe“ odhalení, „flip“ změna, „drop“ pád, „pop“ překvapení…)
+export type Motion = 'rise' | 'pop' | 'slide' | 'flip' | 'blur' | 'drop' | 'zoom' | 'wipe';
+export const MOTIONS: Motion[] = ['rise', 'pop', 'slide', 'flip', 'blur', 'drop', 'zoom', 'wipe'];
 export type CustomItem = {kind: 'text' | 'number' | 'icon' | 'check' | 'cross' | 'badge'; text?: string; sub?: string; icon?: string};
 
 // načítání čísla: celé číslo včetně tisíců („12 490 000“, „1.5“, „60–90“), formát zůstane stejný
@@ -705,10 +708,61 @@ export const GfxView: React.FC<{g: Gfx; t: number; dur: number; fps: number; W: 
 					{it.sub ? <div style={{fontFamily: 'Inter', fontWeight: 500, fontSize: size * 0.62, color: sub(theme), marginTop: 6 * u, lineHeight: 1.2}}>{it.sub}</div> : null}
 				</div>
 			);
-			const title = g.title ? <div style={{fontFamily: theme.font, fontWeight: fw(theme.font), fontSize: 70 * u, color: col, textAlign: 'center', marginBottom: 40 * u, lineHeight: 1.1, opacity: sp(t, fps), letterSpacing: '-0.02em'}}>{g.title}</div> : null;
-			const enter = (i: number, base: number) => {
-				const k = sp(t, fps, at(g, i, base + i * 0.28), 14, 180);
-				return {opacity: Math.min(1, k * 1.4), translate: `0 ${((1 - k) * 46 * u).toFixed(1)}px`, scale: String(0.92 + 0.08 * k)};
+			// *slovo* v nadpisu = zdůraznění (fix zvýrazňovač, podtržení nebo záře podle g.emph)
+			const emphK = interpolate(t, [0.35, 0.85], [0, 1], {...C, easing: EASE});
+			const titleParts = (g.title ?? '').split(/\*([^*]+)\*/);
+			const title = g.title ? (
+				<div style={{fontFamily: theme.font, fontWeight: fw(theme.font), fontSize: 70 * u, color: col, textAlign: 'center', marginBottom: 40 * u, lineHeight: 1.15, opacity: sp(t, fps), letterSpacing: '-0.02em'}}>
+					{titleParts.map((x, k) =>
+						k % 2 === 0 ? (
+							<React.Fragment key={k}>{x}</React.Fragment>
+						) : (
+							<span
+								key={k}
+								style={{
+									color: g.emph === 'marker' ? interpolateColors(emphK, [0, 0.6], [theme.accent, light(theme) ? col : '#0b0c10']) : theme.accent,
+									padding: g.emph === 'marker' ? '0 0.12em' : undefined,
+									borderRadius: 10 * u,
+									backgroundImage: g.emph === 'marker' ? `linear-gradient(${theme.accent}, ${theme.accent})` : g.emph === 'underline' ? `linear-gradient(${theme.accent}, ${theme.accent})` : undefined,
+									backgroundRepeat: 'no-repeat',
+									backgroundPosition: g.emph === 'underline' ? '0 100%' : '0 50%',
+									backgroundSize: g.emph === 'marker' ? `${(emphK * 100).toFixed(1)}% 100%` : g.emph === 'underline' ? `${(emphK * 100).toFixed(1)}% ${(8 * u).toFixed(1)}px` : undefined,
+									textShadow: g.emph === 'glow' ? `0 0 ${(40 * u * emphK).toFixed(1)}px ${theme.accent}` : undefined,
+								}}
+							>
+								{x}
+							</span>
+						),
+					)}
+				</div>
+			) : null;
+			// nástup prvků podle pohybu, který AI zvolila (bez pohybu = jemné vyjetí zespodu)
+			const enter = (i: number, base: number): React.CSSProperties => {
+				const d = at(g, i, base + i * 0.28);
+				const k = sp(t, fps, d, 14, 180);
+				const e = interpolate(t, [d, d + 0.55], [0, 1], {...C, easing: EASE});
+				switch (g.motion) {
+					case 'pop': {
+						const b = sp(t, fps, d, 9, 220);
+						return {opacity: Math.min(1, b * 2), scale: String(0.55 + 0.45 * b)};
+					}
+					case 'slide':
+						return {opacity: e, translate: `${((1 - e) * (i % 2 ? 1 : -1) * 160 * u).toFixed(1)}px 0`};
+					case 'flip':
+						return {opacity: Math.min(1, e * 1.6), transform: `perspective(${1400 * u}px) rotateX(${((1 - e) * 85).toFixed(1)}deg)`, transformOrigin: '50% 100%'};
+					case 'blur':
+						return {opacity: e, filter: `blur(${((1 - e) * 18 * u).toFixed(2)}px)`, scale: String(1.06 - 0.06 * e)};
+					case 'drop': {
+						const b = sp(t, fps, d, 10, 160);
+						return {opacity: Math.min(1, b * 3), translate: `0 ${((1 - b) * -120 * u).toFixed(1)}px`};
+					}
+					case 'zoom':
+						return {opacity: e, scale: String(1.45 - 0.45 * e)};
+					case 'wipe':
+						return {clipPath: `inset(0 ${((1 - e) * 100).toFixed(1)}% 0 0 round ${30 * u}px)`};
+					default:
+						return {opacity: Math.min(1, k * 1.4), translate: `0 ${((1 - k) * 46 * u).toFixed(1)}px`, scale: String(0.92 + 0.08 * k)};
+				}
 			};
 			if (g.layout === 'hero') {
 				const it = items[0] ?? {kind: 'text', text: ''};

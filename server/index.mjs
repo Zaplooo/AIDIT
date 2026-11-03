@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 // AIDIT – lokální server: klienti, nahrání, zpracování (Python + AI), projekt (JSON), náhled (souvislé video), export (Remotion).
 import express from 'express';
 import multer from 'multer';
@@ -8,7 +9,7 @@ import path from 'node:path';
 import {spawn} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {askClaude, fixTranscript, findClaude, selectTakes} from './ai.mjs';
-import {planMontage, planVideo2} from './planner.mjs';
+import {criticBeats, planMontage, planVideo2} from './planner.mjs';
 import {pickBroll, searchMixkit} from './broll.mjs';
 import {studyReference} from './refai.mjs';
 import {styleFromProfiles} from './styles.mjs';
@@ -220,6 +221,13 @@ async function makePlan(id, job) {
 	const setup = ans.setup ? withDefaults(ans.setup, platform) : null;
 	const plan = await planVideo2({words, units: p.units, style: st, duration, platform, brief: ans.brief ?? '', setup, script: ans.script ?? '', prefs: prefsText()}, CONFIG);
 	await setMeta(id, {planBrief: ans.brief ?? '', planSetup: JSON.stringify(ans.setup ?? null)});
+	// druhý názor: každý prvek se znovu posoudí proti tomu, co se v tu chvíli říká – co nesedí, jde pryč
+	if (plan.beats.length >= 2) {
+		if (job) say(job, 'AI kontroluje, jestli každá grafika a B-roll opravdu sedí k tomu, co říkáš');
+		const c = await criticBeats(plan.beats, words, CONFIG, {brief: ans.brief ?? '', type: typeOf(ans)?.label ?? ''});
+		plan.beats = c.beats;
+		if (job) for (const d of c.dropped) job.log.push({t: Date.now(), line: `• Vyhozeno: ${d.beat.kind === 'gfx' ? d.beat.gfx?.type : d.beat.kind} – ${d.reason}`});
+	}
 	syncBeats(plan.beats, words); // položky grafiky naskočí, když je mluvčí vysloví
 	if (p.captions?.emoji) {
 		try {
@@ -307,7 +315,8 @@ async function cleanPass(id, job) {
 		sel.keep = [...sel.keep.filter((k) => !drop.has(k)), ...r.add];
 		sel.reasons = {...(sel.reasons ?? {}), ...Object.fromEntries(r.drop.map((d) => [d.id, d.reason]))};
 		for (const id of r.add) delete sel.reasons[id];
-		await writeJson(path.join(dir, 'selection.json'), sel);
+		const {sel: clean} = dedupeSelection(units, sel);
+		await writeJson(path.join(dir, 'selection.json'), clean);
 		say(job, `Kontrola střihu: ${drop.size ? `vyhodil jsem ${drop.size} úseků (${r.drop.slice(0, 3).map((d) => d.reason).join(', ')})` : ''}${drop.size && r.add.length ? ', ' : ''}${r.add.length ? `vrátil jsem ${r.add.length} chybějících začátků vět` : ''}`);
 		await runPython(['cut', dir]);
 	} catch (e) {
@@ -318,8 +327,20 @@ async function cleanPass(id, job) {
 
 // ---------------------------------------------------------------- styl z odkazu: stáhnout jen na rozbor -> recept -> styl aplikace (video se pak smaže)
 // Každý naučený odkaz se ukládá do „naučených stylů“ a do preferencí, ať se aplikace učí, co se autorovi líbí.
+function refKey(url) {
+	let norm = url.trim();
+	try {
+		const u = new URL(norm);
+		const v = u.searchParams.get('v'); // YouTube ?v=
+		norm = `${u.hostname.replace(/^(www|m)\./, '').toLowerCase()}${u.pathname.replace(/\/+$/, '')}${v ? `?v=${v}` : ''}`;
+	} catch {
+		/* není URL – klíč z celého textu */
+	}
+	return crypto.createHash('sha1').update(norm).digest('hex').slice(0, 16);
+}
+
 async function learnReference(url, note, report = () => {}) {
-	const key = Buffer.from(url).toString('base64url').slice(-16).replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+	const key = refKey(url);
 	const id = `ref-${key}`;
 	const known = await readJson(path.join(STYLES, `${id}.json`));
 	if (known) {
