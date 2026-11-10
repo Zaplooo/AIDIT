@@ -492,7 +492,7 @@ def cut(proj: Path):
         gap = c["in"] - p["out"] if p else 9
         limit = 0.5 if p and min(p["out"] - p["in"], c["out"] - c["in"]) < 0.9 else 0.3
         if p and p["enabled"] and c["enabled"] and seg_of(p["in"]) == seg_of(c["in"]) and (gap <= 0.15 or (gap <= limit and not word_in(p["out"], c["in"]))):
-            p["out"] = c["out"]; p["words"] += c["words"]
+            p["out"] = c["out"]; p["words"] += [x for x in c["words"] if x not in p["words"]]
         else:
             merged.append(c)
     for a, b in zip(merged, merged[1:]):

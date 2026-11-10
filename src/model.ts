@@ -119,6 +119,7 @@ export type Project = {
 	plan: Plan;
 	base: {key: string; preview: string | null; full: string | null};
 	segments?: {start: number; end: number; name: string}[] | null;
+	qa?: {at: string; fixed: string[]; warnings: string[]; clips: number; duration: number}; // závěrečná kontrola střihu
 };
 
 export const FORMATS: Record<Format, {w: number; h: number; label: string}> = {

@@ -10,6 +10,7 @@ import {spawn} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {askClaude, fixTranscript, findClaude, selectTakes} from './ai.mjs';
 import {criticBeats, planMontage, planVideo2} from './planner.mjs';
+import {verifyProject} from './qa.mjs';
 import {pickBroll, searchMixkit} from './broll.mjs';
 import {studyReference} from './refai.mjs';
 import {styleFromProfiles} from './styles.mjs';
@@ -202,9 +203,12 @@ function outWords(p) {
 	const words = [];
 	p.words.forEach((w, wi) => {
 		const c = laid.find((k) => Math.min(w.end, k.out) - Math.max(w.start, k.in) >= Math.min(0.5 * (w.end - w.start), 0.12));
-		if (c) words.push({wi, text: w.text, start: c.fromF / fps + Math.max(w.start, c.in) - c.in});
+		if (c) words.push({wi, text: w.text, start: c.fromF / fps + Math.max(w.start, c.in) - c.in, clip: c.id});
 	});
-	return {words: words.sort((a, b) => a.start - b.start), duration: f / fps};
+	words.sort((a, b) => a.start - b.start);
+	// značka střihu: první slovo každého dalšího klipu (plánovač podle ní schová skoky v obraze pod B-roll / grafiku)
+	words.forEach((w, i) => (w.cut = i > 0 && w.clip !== words[i - 1].clip));
+	return {words, duration: f / fps};
 }
 
 const MUSIC_LIB = () => JSON.parse(fs.readFileSync(path.join(ROOT, 'public', 'music', 'library.json'), 'utf-8'));
@@ -282,6 +286,24 @@ async function makePlan(id, job) {
 	await writeJson(path.join(dir, 'project.json'), cur);
 	if (plan.beats.some((b) => b.kind === 'broll')) await runPython(['broll', dir]);
 	return cur;
+}
+
+// závěrečná kontrola hotového střihu: měřitelné chyby se opraví samy, zbytek se vypíše autorovi
+async function finalCheck(id, job) {
+	try {
+		const dir = pdir(id);
+		const f = path.join(dir, 'project.json');
+		const p = await readJson(f);
+		const qa = verifyProject(p, dir);
+		await writeJson(f, p);
+		say(job, qa.fixed.length || qa.warnings.length ? `Závěrečná kontrola: opraveno ${qa.fixed.length}, k pohlídání ${qa.warnings.length}` : `Závěrečná kontrola: ${qa.clips} klipů, ${qa.duration} s – bez chyb`);
+		for (const l of qa.fixed) job.log.push({t: Date.now(), line: `• Opraveno: ${l}`});
+		for (const l of qa.warnings) job.log.push({t: Date.now(), line: `• Pozor: ${l}`});
+		return p;
+	} catch (e) {
+		say(job, `Závěrečná kontrola se nepovedla (${e.message})`);
+		return null;
+	}
 }
 
 async function setMeta(id, patch) {
@@ -539,6 +561,7 @@ async function processProject(id) {
 			} catch (e) {
 				say(job, `AI plán se nepovedl (${e.message}) – střih je hotový i bez karet`);
 			}
+			await finalCheck(id, job);
 			say(job, 'Skládám náhled');
 			await renderBase(id, 'preview', stage(0.9, 1));
 			const p = await readJson(path.join(dir, 'project.json'));
@@ -603,6 +626,7 @@ async function applyChange(id, {reselect = false, recut = false, replan = false}
 					say(job, `AI plán se nepovedl (${e.message})`);
 				}
 			}
+			if (recut || replan) p = (await finalCheck(id, job)) ?? p;
 			if (keyOf(p) !== p.base.key) {
 				say(job, 'Skládám náhled');
 				await renderBase(id, 'preview', (x) => (job.progress = 0.6 + 0.4 * x));

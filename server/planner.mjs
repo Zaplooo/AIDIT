@@ -13,7 +13,7 @@ PRAVIDLA
   nebo v horní polovině nad mluvčím ("split"). Šablony versus/side/pill/lowerthird/counter/marquee NEPOUŽÍVEJ, pokud je autor výslovně nevybral.
 - Výčty (list, cards, chips, timeline, kinetic): položky piš přesně slovy, která mluvčí řekne, a grafiku začni na prvním z nich – aplikace pak každou položku ukáže ve chvíli, kdy ji vysloví. Grafika trvá, dokud mluvčí nedořekne poslední bod.
 - Když se žádná šablona nehodí, VYMYSLI vlastní grafiku "custom" (buď kreativní, každá může vypadat jinak): layout "hero" (jedno velké číslo/ikona + text), "stack" (2–5 řádků s ikonou/fajfkou/číslem), "row" (2–4 dlaždice vedle sebe), "grid" (2×2); parts = [{kind: text|number|icon|check|cross|badge, text, sub, icon}].
-  Navrhni i POHYB podle významu (motion): wipe = odhalení / tajemství, flip = změna / před a po, drop = pád / problém, pop = překvapení / výsledek, slide = srovnání / dvě strany, zoom = důraz, blur = klidná myšlenka, rise = výčet. V title můžeš jedno klíčové slovo dát do *hvězdiček* a zvolit emph (marker = fix zvýrazňovač, underline, glow).
+  Navrhni i POHYB podle významu (motion): wipe = odhalení / tajemství, flip = změna / před a po, drop = pád / problém, pop = překvapení / výsledek, slide = srovnání / dvě strany, zoom = důraz, blur = klidná myšlenka, rise = výčet. Jen u \"custom\" můžeš v title jedno klíčové slovo dát do *hvězdiček* a zvolit emph (marker = fix zvýrazňovač, underline, glow).
 - Grafika (kind "gfx") ilustruje, co se právě říká. Šablony (vyber tu, která k větě sedí nejlépe, a STŘÍDEJ je):
   • "reveal" – Apple styl: věta se odhalí slovo po slovu s rozostřením, klíčové slovo svítí (pointa, hook, silná věta),
   • "headline" – nadpis s fixem na klíčovém slově (+ malý nadpis "sub"),
@@ -129,7 +129,13 @@ const SCHEMA = {
 };
 
 const s = (x) => (typeof x === 'string' ? x.trim() : '');
+// *hvězdičky* (zdůraznění slova) umí jen nadpis vlastní grafiky – jinde by se vypsaly doslova
+const noStars = (v, keep) => (typeof v === 'string' ? v.replace(/\*/g, '') : Array.isArray(v) ? v.map((x) => noStars(x)) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, k === keep ? x : noStars(x)])) : v);
 export function cleanGfx(g) {
+	const r = cleanGfx0(g);
+	return r ? noStars(r, r.type === 'custom' ? 'title' : undefined) : r;
+}
+function cleanGfx0(g) {
 	if (!g) return null;
 	switch (g.type) {
 		case 'headline':
@@ -247,7 +253,7 @@ function toFullscreen(g) {
 }
 
 export async function planVideo2({words, units, style, duration, platform, brief = '', setup = null, script = '', prefs = ''}, config) {
-	const text = words.map((w) => `[${w.wi}|${w.start.toFixed(1)}]${w.text}`).join(' ');
+	const text = words.map((w) => `${w.cut ? '✂ ' : ''}[${w.wi}|${w.start.toFixed(1)}]${w.text}`).join(' ');
 	const ulist = units.filter((u) => u.keep).map((u) => `${u.id}: ${u.text}`).join('\n');
 	const recipe = style.recipe ? JSON.stringify(style.recipe) : style.description;
 	const rules = setupRules(setup);
@@ -260,6 +266,7 @@ ${rules.text ? `NASTAVENÍ OD AUTORA (má přednost před receptem):\n${rules.te
 Použité úseky (pro otázku „hook“):
 ${ulist}
 
+Značka ✂ = místo střihu (skok v obraze). Profi střihači skoky schovávají: když se B-roll nebo celoobrazovková grafika OBSAHOVĚ hodí k místu kolem ✂, začni ji 1–2 slova před ✂ a nech ji doběhnout za něj. Kvůli schování střihu ale nic nevymýšlej – když se tam nic nehodí, nech čistý střih.
 Text videa po slovech [index|čas]slovo:
 ${text}`;
 	const schema = structuredClone(SCHEMA);

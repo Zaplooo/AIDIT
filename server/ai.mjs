@@ -23,7 +23,22 @@ export function findClaude(config) {
 	return (cached = null);
 }
 
-export function askClaude(config, prompt, system, {timeoutMs = 240000, schema = null, readDir = null, model = null} = {}) {
+// model: null = „mozek“ (config.brainModel, výchozí fable – nejchytřejší model); 'haiku' pro drobnosti.
+// Když mozek není dostupný (starší Claude Code, limit), zkusí se totéž s výchozím modelem.
+let brainOk = true;
+export async function askClaude(config, prompt, system, opts = {}) {
+	const brain = config.brainModel === undefined ? 'fable' : config.brainModel;
+	if (opts.model || !brain || !brainOk) return askOnce(config, prompt, system, opts);
+	try {
+		return await askOnce(config, prompt, system, {...opts, model: brain});
+	} catch (e) {
+		if (/včas/.test(e.message)) throw e;
+		if (/model|not found|invalid|access|available/i.test(e.message)) brainOk = false;
+		return askOnce(config, prompt, system, opts);
+	}
+}
+
+function askOnce(config, prompt, system, {timeoutMs = 240000, schema = null, readDir = null, model = null} = {}) {
 	const exe = findClaude(config);
 	if (!exe) return Promise.reject(new Error('Claude Code nenalezen'));
 	return new Promise((resolve, reject) => {

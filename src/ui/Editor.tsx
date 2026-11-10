@@ -265,6 +265,14 @@ export const Editor: React.FC<{id: string}> = ({id}) => {
 					</span>
 				</div>
 				<div style={{flex: 1}} />
+				{project.qa ? (
+					<span
+						className={'qa-badge' + (project.qa.warnings.length ? ' warn' : '')}
+						title={[project.qa.warnings.length ? 'K pohlídání:' : 'Střih prošel závěrečnou kontrolou (zdvojení, útržky, překryvy, chybějící záběry).', ...project.qa.warnings.map((x) => '• ' + x), ...(project.qa.fixed.length ? ['Opraveno automaticky:', ...project.qa.fixed.map((x) => '• ' + x)] : [])].join('\n')}
+					>
+						{project.qa.warnings.length ? `Zkontroluj ${project.qa.warnings.length}` : 'Zkontrolováno'}
+					</span>
+				) : null}
 				<button className={'ghost' + (showText ? ' active' : '')} onClick={() => setShowText(!showText)} title="Přepis videa: které věty jsou ve videu a které vystřižené">
 					<Icon name="text" /> Přepis
 				</button>
